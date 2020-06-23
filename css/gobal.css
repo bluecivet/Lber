@@ -1,0 +1,352 @@
+
+/*this is moblie first approch*/
+
+*
+{
+	margin: 0;
+	padding: 0;
+}
+
+
+.wrap
+{
+	position: static;
+	left: 0;
+	transition: all 1s;	/* for nav list part */
+}
+
+
+.wrapCover
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 2;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(10, 10, 10, 0.5);
+}
+
+/*nav part*/
+
+nav > div
+{
+	width: 100%;
+	display: flex;
+	background-color: #000000;
+	color: white;
+	align-items: center;
+	justify-content: space-between;
+}
+
+nav > div > .logo
+{
+	padding: 1em;
+	display: flex;
+}
+
+nav > div> .logo > a, nav > div> .logo > a > img
+{
+	display: block;
+	height: 46px;
+	width: 46px;
+	line-height: 46px;
+	color: white;
+	font-weight: 900;
+	font-size: 1.5em;
+	text-decoration: none;
+}
+
+nav > div> .logo > a
+{
+	margin: 0 0.1em;
+}
+
+nav > div > ul
+{
+	display: flex;
+	list-style: none;
+	font-size: 1.3em;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.navList
+{
+	display: block;
+}
+
+.navListShow
+{
+	transition: all 1s;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 100%;
+	width: 50vw;
+	height: 100vh;
+	background-color: #000;
+	z-index: 3;
+}
+
+.navListIcon
+{
+	transition: all 1s;
+}
+
+.navListShow li
+{
+	list-style: none;
+	width: 100%;
+	padding-left: 1em;
+}
+
+
+.navListShow li:first-of-type
+{
+	margin-top: 3em;
+}
+
+.navListShow li a
+{
+	display: block;
+	width: 100%;
+	padding: 1em ;
+	text-decoration: none;
+	color: #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+nav div i
+{
+	/*font-size: 2em;*/
+	/*margin-left: 5%;*/
+}
+
+.controlOption li
+{
+	box-sizing: border-box;
+	padding: 0.3em 0.5em;
+}
+
+.controlOption li a
+{
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-decoration: none;
+	color: #000;
+}
+
+.controlOption li:first-of-type a
+{
+	color: #fff;
+	margin-right: 0.5em;
+	font-size: 0.9em;
+}
+
+.controlOption li:nth-of-type(2)
+{
+	background-color: #fff;
+	color: #000;
+	border-radius: 1em;
+	margin-right: 0.5em;
+}
+
+.controlOption li:last-of-type
+{
+	margin-right: 1em;
+}
+
+.navListLogo 
+{
+	width: min-content;
+	margin: 0 auto;
+	padding: 1.5em;
+}
+.navListLogo img
+{
+	width: 3em;
+	height: 3em;
+}
+
+.navListLogo span
+{
+	font-weight: 900;
+	font-size: 1.5em;
+}
+
+
+
+/*done nav*/
+
+main
+{
+	width: 100%;
+	height: 40em;
+	background-color: #fff;
+	margin-bottom: 0;
+}
+
+
+/*done main*/
+
+
+/*footer*/
+
+footer
+{
+	margin-top: 0;
+	background-color: #000;
+	color: #fff;
+	width: 100%;
+	padding: 2em 0;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: min-content 2fr;
+}
+
+footer .logo
+{
+	grid-column: 1 / 3;
+	grid-row: 1 / 2;
+	width: 5em;
+	margin: 0em auto;
+	font-size: 1.5em;
+	height: 46px;
+}
+
+footer .logo a
+{
+	display: inline-block;
+	color: #fff;
+	text-decoration: none;
+	line-height: 1.5em;
+}
+
+footer .logo img
+{
+	width: 46px;
+	height: 46px;
+}
+
+footer .logo a:last-of-type
+{
+	transform: translateY(-30%);
+}
+
+footer .followIcon
+{
+	grid-column: 2 / 3;
+	padding: 2em 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	list-style: none;
+}
+
+footer .followIcon li a
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	color: #ccc;
+	font-size: 1.6em;
+	padding: 0.5em;
+}
+
+footer .followIcon li a span
+{
+	display: none;
+}
+
+.footerNavList
+{
+	grid-column: 1 / 2;
+	grid-row: 2 / 3;
+	padding: 2em 0;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 1.2em;
+}
+
+.footerNavList a
+{
+	color: #ccc;
+}
+
+
+
+
+/*desktop*/
+
+@media(min-width: 1000px)
+{
+
+	/*nav*/
+	nav > div
+	{
+		display: block;
+
+	}
+	nav > div:after
+	{
+		content:"";
+	    height:0px;
+	    width:0px;
+	    clear:both;
+	    display:block;
+	    overflow: hidden;
+	}
+	.logo
+	{
+		float: left;
+	}
+
+	.navList
+	{
+		width: 15em;
+		float: left;
+		display: flex;
+		align-items: center;
+		padding: 0.3em;
+	}
+
+	.navList li a
+	{
+		text-decoration: none;
+		color: #fff;
+		display: block;
+		height: 100%;
+		box-sizing: border-box;
+		padding: 1em;
+	}
+
+	.navList li a:hover
+	{
+		background-color: #ccc;
+		color: #000;
+		border-radius: 1em;
+		padding: 0.5em 1em;
+	}
+
+	.navListIcon
+	{
+		display: none;
+	}
+
+
+	.controlOption
+	{
+		float: right;
+		margin-right: 2em;
+		margin-top: 1em;
+	}
+
+}
