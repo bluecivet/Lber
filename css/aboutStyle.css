@@ -1,0 +1,160 @@
+body
+{
+	/*overflow-x: hidden;*/
+}
+
+
+.mainWrap
+{
+	/*padding: 1em;*/
+	font-family: 'UberMove', 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.phoneViewImage, .description
+{
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.description
+{
+	padding: 0.5em 1.5em 5em 1.5em;
+}
+
+.description h2
+{
+	font-size: 2em;
+	font-weight: 500;
+	padding: 0.5em 0 1em 0;
+	color: #fd0000;
+}
+
+.description p
+{
+	font-size: 1.1em;
+	padding: 0.3em 0;
+	color: #404040;
+}
+
+
+.descriptionSection
+{
+	position: relative;
+}
+.descriptionSection:nth-of-type(1) .description
+{
+	width: min-content;
+}
+.descriptionSection:nth-of-type(1) .description 
+{
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	width: 12em;
+}
+
+
+@media(min-width: 600px)
+{
+	.descriptionSection:nth-of-type(1) .description 
+	{
+		top: 60%;
+		left: 65%;
+		font-size: 2em;
+	}
+}
+
+
+@media(min-width: 800px)
+{
+	.descriptionSection:nth-of-type(1) .description 
+	{
+		top: 55%;
+		left: 65%;
+	}
+}
+
+
+
+
+@media (min-width: 1000px)
+{
+
+	.phoneViewImage, .descriptionSection
+	{
+		width: 100%;
+	}
+	
+	.descriptionSection:nth-of-type(1) .description
+	{
+		top: 50%;
+		left: 65%;
+		font-size: 2em;
+	}
+
+
+	.descriptionSection:nth-of-type(2) .description
+	{
+		/*box-sizing: border-box;*/
+		padding: 3em 15em 5em 10em;
+		font-size: 1.2em;
+	}
+	
+	.descriptionSection:nth-of-type(3) .description
+	{
+		position: absolute;
+		top: 1%;
+		left: 3%;
+		width: 30%;
+		background-color: rgba(50,50,50, 0.5);
+		padding: 2em;
+	}
+
+	.descriptionSection:nth-of-type(3) .description p,
+	.descriptionSection:nth-of-type(3) .description h2
+	{
+		color: #fff;
+		/*font-size: 1.5em;*/
+		line-height: 1.5em;
+		word-spacing: 0.2em;
+	}
+
+	.descriptionSection:nth-of-type(4)
+	{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		box-sizing: border-box;
+		padding: 5%;
+		/*padding-left: 2%;*/
+		/*background-color: #ccc;*/
+	}
+
+	.descriptionSection:nth-of-type(4) .phoneViewImage
+	{
+		grid-column: 2  / 3;
+		grid-row: 1 / 2;
+	}
+
+	.descriptionSection:nth-of-type(4) .description
+	{
+		grid-column: 1 / 2;
+		grid-row: 1 / 2;
+		padding: 0em 5em 3em 0;
+		font-size: 1.2em;
+	}
+}
+
+
+
+@media (min-width: 1400px)
+{
+	.descriptionSection:nth-of-type(3) .description
+	{
+		top: 10%;
+	}
+
+	.descriptionSection:nth-of-type(4) .description
+	{
+		padding: 5em 5em 3em 0;
+	}
+}

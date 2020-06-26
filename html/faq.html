@@ -2,36 +2,44 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<base href="../" />
-
+	
 	<title>Lber FAQ</title>
 	<link rel="icon" href="image/logo.png" type="image/x-icon"/> 
 	<link rel="stylesheet" type="text/css" href="css/gobal.css">
 	<link href="css/all.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/faq.css">
+
+	<script type="text/javascript" src = "js/jQuery.min.js"></script>
+	<script type="text/javascript" src = "js/phoneNavList.js"></script>
+	<script type="text/javascript" src = "js/questionPopDown.js"></script>
 </head>
 <body>
 
 	<div class = "wrap">
 		<nav>
 			<div>
-				<div class = "logo">
+				<div class = "logo" aria-label = "click to go to main page">
 					<a href="index.html"><img src="image/logo.png"></a>
 					<a href="index.html">Lber</a>
 				</div>
-
-				<ul class = "navList">
-					<li><a href="html/about.html">About</a></li>
-					<li><a href="html/faq.html">FAQ</a></li>
-					<li><a href="html/tutor.html">Tutor</a></li>
+				
+				
+				<ul class = "navList" role = "menu">
+					<li><a href="html/about.html" role="menuitem">About</a></li>
+					<li><a href="html/faq.html" role="menuitem">FAQ</a></li>
+					<li><a href="html/tutor.html" role="menuitem">Tutor</a></li>
 				</ul>
+				
+				
 
 
 				<ul class = "controlOption">
-					<li><a href="html/login.html"><i class="fas fa-user"></i></a></li>
+					<li aria-label = "log in"><a href="html/login.html"><i class="fas fa-user"></i></a></li>
 					<li><a href="html/signin.html">sign in</a></li>
-					<li class = "navListIcon"> <i class="fas fa-bars"></i> </li>
+					<li class = "navListIcon" aria-label = "click to open menu page"> <i class="fas fa-bars"></i> </li>
 				</ul>
 			</div>
 		</nav>
@@ -39,7 +47,183 @@
 		<!-- --------------------------------------------------------------------------------- -->
 
 		<main>
-			
+			<div class = "mainWrap">
+				<h2>Have any question? </h2>
+				<h3>Try talk a look at Frequently Asked Questions</h3>
+
+				<div class = "questions">
+					<section class = "quectionSection" aria-label = "question section">
+						
+						<div class = "quectionBox" role = "button">
+							<p class = "question" role = "question">
+								How safe if i use Lber?
+							</p>
+							<i class="fas fa-angle-left"aria-label = "less than icon"></i>
+						</div>
+
+						<div class = "answerBox">
+							<p role = "answer">
+								Very safe. All driver have to pass our test in order to get on road. They must have a license first and their car must meet our test.
+							</p>
+						</div>
+					</section>
+
+					<section class = "quectionSection" aria-label = "question section">
+						
+						<div class = "quectionBox" role = "button">
+							<p class = "question" role = "question">
+								Is my information safe?
+							</p>
+							<i class="fas fa-angle-left"aria-label = "less than icon"></i>
+						</div>
+
+						<div class = "answerBox">
+							<p role = "answer">
+								yes. Your information can only access by yourself. No one can see your information without your constant. your information is saved in our database and our database has high secure level.
+							</p>
+						</div>
+					</section>
+
+
+					<section class = "quectionSection" aria-label = "question section">
+						
+						<div class = "quectionBox" role = "button">
+							<p class = "question" role = "question">
+								How do I pay?
+							</p>
+							<i class="fas fa-angle-left"aria-label = "less than icon"></i>
+						</div>
+
+						<div class = "answerBox">
+							<p role = "answer">
+								We offer point system which can conver to real money. You can add point by going to your bank and ask to do so. You pay by your point and driver can get your point.
+							</p>
+						</div>
+					</section>
+
+
+					<section class = "quectionSection" aria-label = "question section">
+						
+						<div class = "quectionBox" role = "button">
+							<p class = "question" role = "question">
+								How does Lber work?
+							</p>
+							<i class="fas fa-angle-left"aria-label = "less than icon"></i>
+						</div>
+
+						<div class = "answerBox">
+							<p role = "answer">
+								In cities where Lber operates, use your rider app to request a ride. When a nearby driver-partner accepts your request, your app displays an estimated time of arrival for the driver-partner heading to your pickup location. Your app notifies you when the driver-partner is about to arrive.
+							</p>
+						</div>
+					</section>
+
+
+					<section class = "quectionSection" aria-label = "question section">
+						
+						<div class = "quectionBox" role = "button">
+							<p class = "question" role = "question">
+								How do I create an Lber account?
+							</p>
+							<i class="fas fa-angle-left"aria-label = "less than icon"></i>
+						</div>
+
+						<div class = "answerBox">
+							<p role = "answer">
+								Creating an Uber account requires a valid email address and phone number. You'll also need to create a password and agree to terms and conditions and our privacy notice. Fill in your first and last name, phone number. 
+							</p>
+						</div>
+					</section>
+					
+
+
+					<section class = "quectionSection" aria-label = "question section">
+						
+						<div class = "quectionBox" role = "button">
+							<p class = "question" role = "question">
+								Resetting your password?
+							</p>
+							<i class="fas fa-angle-left"aria-label = "less than icon"></i>
+						</div>
+
+						<div class = "answerBox">
+							<p role = "answer">
+								If you forgot your password or need it to be reset. you need to log in first and there is a option in there.
+							</p>
+						</div>
+					</section>
+					
+					
+					<section class = "quectionSection" aria-label = "question section">
+						
+						<div class = "quectionBox" role = "button">
+							<p class = "question" role = "question">
+								Can I use a video camera?
+							</p>
+							<i class="fas fa-angle-left"aria-label = "less than icon"></i>
+						</div>
+
+						<div class = "answerBox">
+							<p role = "answer">
+								Drivers may install and use video cameras, dash cams, or other recording devices to record riders for the purpose of fulfilling transportation services.Local regulations may require individuals using recording equipment in vehicles to fully disclose to riders that they're being recorded in or around a vehicle and obtain consent. Please check local regulations in your city to determine if these apply.
+							</p>
+						</div>
+					</section>
+
+					
+					<section class = "quectionSection" aria-label = "question section">
+						
+						<div class = "quectionBox" role = "button">
+							<p class = "question" role = "question">
+								Accepting cash? 
+							</p>
+							<i class="fas fa-angle-left"aria-label = "less than icon"></i>
+						</div>
+
+						<div class = "answerBox">
+							<p role = "answer">
+								No. We use point system.
+							</p>
+						</div>
+					</section>
+					
+
+					<section class = "quectionSection" aria-label = "question section">
+						
+						<div class = "quectionBox" role = "button">
+							<p class = "question" role = "question">
+								What if I am allergic to dogs?
+							</p>
+							<i class="fas fa-angle-left"aria-label = "less than icon"></i>
+						</div>
+
+						<div class = "answerBox">
+							<p role = "answer">
+								By law, all partners must accommodate riders with service animals to the point of undue hardship.If carrying a service animal substantially interferes with your health due to an allergy, you must get a letter from your doctor saying so, before you get on the road.
+
+							</p>
+						</div>
+					</section>
+					
+
+					<section class = "quectionSection" aria-label = "question section">
+						
+						<div class = "quectionBox" role = "button">
+							<p class = "question" role = "question">
+								What if I have a religious objection to dogs?
+							</p>
+							<i class="fas fa-angle-left"aria-label = "less than icon"></i>
+						</div>
+
+						<div class = "answerBox">
+							<p role = "answer">
+								By law, all partners must accommodate riders with service animals to the point of undue hardship.If carrying a service animal substantially interferes with your religious beliefs, you must get a letter from your cleric (like a priest or a religious leader) saying so, before you get on the road.
+							</p>
+						</div>
+					</section>
+
+				</div>
+			</div>
 		</main>
 
 
@@ -48,19 +232,19 @@
 
 		<footer>
 
-			<div class = "logo">
+			<div class = "logo" aria-label = "this is a logo">
 				<a href="index.html"><img src="image/logo.png"></a>
 				<a href="index.html">Lber</a>
 			</div>
 
-			<ul class = "followIcon">
+			<ul class = "followIcon" role = "contact list">
 				<li><a href="#"><i class="fab fa-facebook-square"></i><span>Facebook</span></a></li>
 				<li><a href="#"><i class="fab fa-twitter"></i><span>Twitter</span></a></li>
 				<li><a href="#"><i class="fab fa-instagram"></i><span>Instagram</span></a></li>
 				<li><a href="#"><i class="fab fa-snapchat-ghost"></i><span>Snapchat</span></a></li>
 			</ul>
 
-			<ul class = "footerNavList">
+			<ul class = "footerNavList" role = "menu">
 				<li><a href="html/about.html">About</a></li>
 				<li><a href="html/faq.html">FAQ</a></li>
 				<li><a href="html/tutor.html">Tutor</a></li>
@@ -69,6 +253,6 @@
 		</footer>
 	</div>
 	
-
+	<script type="text/javascript" src = "js/dependWindowSize.js"></script>
 </body>
 </html>

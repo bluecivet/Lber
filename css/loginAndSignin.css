@@ -1,0 +1,28 @@
+.mainWrap
+{
+	width: 100%;
+	height: 80vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/*background-image: url("../image/yellowWhite.jpg");*/
+	/*background-image: linear-gradient(45deg, #FFB95E, #F35C70);*/
+/*	background-position: center left;*/
+	/*background-color: #eee;*/
+}
+
+.mainWrap button
+{
+	width: 30%;
+	/*background-color: #f0f0f0f0;*/
+	/*padding: 2em;*/
+	/*color: white;*/
+	font-size: 2em;
+	cursor: pointer;
+	height: 3em;
+	text-align: center;
+	margin: 0 3em;
+	border-radius: 2em;
+	/*background-image: linear-gradient(45deg, #920468, #158301);*/
+}
+

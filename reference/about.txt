@@ -1,0 +1,14 @@
+CEOhope:
+	https://unsplash.com/photos/6anudmpILw4
+
+furtherPlan:
+	https://unsplash.com/photos/qWwpHwip31M
+
+workHard:
+	https://unsplash.com/photos/zNRITe8NPqY
+
+sky:
+	https://unsplash.com/photos/glVePDpRIho
+
+
+text: https://www.uber.com/ca/en/about/

@@ -1,0 +1,17 @@
+logo:
+	https://icons8.com/icons/set/logo -> Color →Logos → Video Games→ Garena
+
+user icon:
+	https://fontawesome.com/icons/user?style=solid
+
+facebook icon:
+	https://fontawesome.com/icons/facebook-square?style=brands
+
+twitter icon:
+	https://fontawesome.com/icons/twitter?style=brands
+
+instergram icon:
+	https://fontawesome.com/icons/instagram?style=brands
+
+snap chat icon:
+	https://fontawesome.com/icons/snapchat-ghost?style=brands

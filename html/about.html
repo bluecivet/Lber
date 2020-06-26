@@ -2,36 +2,43 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<base href="../" />
-
+	
 	<title>Lber about</title>
 	<link rel="icon" href="image/logo.png" type="image/x-icon"/> 
 	<link rel="stylesheet" type="text/css" href="css/gobal.css">
 	<link href="css/all.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/aboutStyle.css">
+
+	<script type="text/javascript" src = "js/jQuery.min.js"></script>
+	<script type="text/javascript" src = "js/phoneNavList.js"></script>
 </head>
 <body>
 
 	<div class = "wrap">
 		<nav>
 			<div>
-				<div class = "logo">
+				<div class = "logo" aria-label = "click to go to main page">
 					<a href="index.html"><img src="image/logo.png"></a>
 					<a href="index.html">Lber</a>
 				</div>
-
-				<ul class = "navList">
-					<li><a href="html/about.html">About</a></li>
-					<li><a href="html/faq.html">FAQ</a></li>
-					<li><a href="html/tutor.html">Tutor</a></li>
+				
+				
+				<ul class = "navList" role = "menu">
+					<li><a href="html/about.html" role="menuitem">About</a></li>
+					<li><a href="html/faq.html" role="menuitem">FAQ</a></li>
+					<li><a href="html/tutor.html" role="menuitem">Tutor</a></li>
 				</ul>
+				
+				
 
 
 				<ul class = "controlOption">
-					<li><a href="html/login.html"><i class="fas fa-user"></i></a></li>
+					<li aria-label = "log in"><a href="html/login.html"><i class="fas fa-user"></i></a></li>
 					<li><a href="html/signin.html">sign in</a></li>
-					<li class = "navListIcon"> <i class="fas fa-bars"></i> </li>
+					<li class = "navListIcon" aria-label = "click to open menu page"> <i class="fas fa-bars"></i> </li>
 				</ul>
 			</div>
 		</nav>
@@ -39,7 +46,45 @@
 		<!-- --------------------------------------------------------------------------------- -->
 
 		<main>
-			
+			<div class = mainWrap>
+				
+				<section class = "descriptionSection">
+					<img class = "phoneViewImage" src="image/furtherPlan.jpg" alt = "a picture that shouw more plan">
+
+					<div class = "description">
+						<h2>About Us</h2>
+					</div>
+				</section>
+
+				<section class = "descriptionSection">
+					<div class = "description">
+						<h2>Rides and beyond</h2>
+						<p>In addition to giving riders a way to get from point A to point B, we're working to bring the future closer with self-driving technology and urban air transport, helping people order food quickly and affordably, removing barriers to healthcare, creating new freight-booking solutions, and helping companies provide a seamless employee travel experience.</p>
+					</div>
+				</section>
+
+				<section class = "descriptionSection">
+					<img class = "phoneViewImage" src="image/CEOhope.jpg" alt = "picture of a person">
+
+					<div class = "description">
+						<h2>CEO</h2>
+						<p>
+							Good things happen when people can move, whether across town or toward their dreams.  What started as a way to tap a button to get a ride has led to billions of moments of human connection as people around the world go all kinds of places in all kinds of ways with the help of our technology.
+						</p>
+					</div>
+				</section>
+				
+				<section class = "descriptionSection">
+					<img class = "phoneViewImage" src="image/workHard.jpg" alt = "picture of a person">
+
+					<div class = "description">
+						<h2>Getting diversity right</h2>
+						<p>
+							It’s our goal to create a workplace that is inclusive and reflects the diversity of the cities we serve—where everyone can be their authentic self, and where that authenticity is celebrated as a strength. By creating an environment where people from every background can thrive, we’ll make Uber a better company—for our employees and our customers.
+						</p>
+					</div>
+				</section>
+			</div>
 		</main>
 
 
@@ -48,19 +93,19 @@
 
 		<footer>
 
-			<div class = "logo">
+			<div class = "logo" aria-label = "this is a logo">
 				<a href="index.html"><img src="image/logo.png"></a>
 				<a href="index.html">Lber</a>
 			</div>
 
-			<ul class = "followIcon">
+			<ul class = "followIcon" role = "contact list">
 				<li><a href="#"><i class="fab fa-facebook-square"></i><span>Facebook</span></a></li>
 				<li><a href="#"><i class="fab fa-twitter"></i><span>Twitter</span></a></li>
 				<li><a href="#"><i class="fab fa-instagram"></i><span>Instagram</span></a></li>
 				<li><a href="#"><i class="fab fa-snapchat-ghost"></i><span>Snapchat</span></a></li>
 			</ul>
 
-			<ul class = "footerNavList">
+			<ul class = "footerNavList" role = "menu">
 				<li><a href="html/about.html">About</a></li>
 				<li><a href="html/faq.html">FAQ</a></li>
 				<li><a href="html/tutor.html">Tutor</a></li>
@@ -69,6 +114,6 @@
 		</footer>
 	</div>
 	
-
+	<script type="text/javascript" src = "js/dependWindowSize.js"></script>
 </body>
 </html>

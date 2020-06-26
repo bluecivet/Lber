@@ -1,0 +1,73 @@
+.mainWrap > *
+{
+	margin: 0 auto;
+	font-family: lato,sans-serif;
+}
+
+.mainWrap > h2
+{
+	font-size: 2em;
+	text-align: center;
+	padding-top: 2em;
+	font-weight: 600;
+}
+
+.mainWrap > h3
+{
+	font-size: 1.5em;
+	text-align: center;
+	padding-top: 1em;
+	padding-bottom: 3em;
+}
+
+.mainWrap .questions
+{
+	width: 95%;
+	padding-bottom: 3em;
+}
+
+.mainWrap .questions .quectionSection
+{
+	width: 100%;
+	box-sizing: border-box;
+	background: #f1f1f1;
+	font-size: 1.5em;
+	padding: 0.8em;
+	margin: 0.5em auto;
+}
+
+.quectionBox
+{
+	display: flex;
+	justify-content: space-between;
+	border-color: #f9f9f9;
+	background: #f1f1f1;
+	padding: 0.5em 0;
+	cursor: pointer;
+}
+
+.quectionBox i
+{
+	margin-right: 0.5em;
+	margin-left: 3px;
+	transition: all 0.5s;
+	height: min-content;
+}
+
+.answerBox p
+{
+	display: none;
+	padding: 2em 0;
+	font-size: 0.8em;
+	line-height: 2em;
+	color: #151313;
+}
+
+
+@media(min-width: 1000px)
+{
+	.mainWrap .questions
+	{
+		width: 70%;
+	}
+}

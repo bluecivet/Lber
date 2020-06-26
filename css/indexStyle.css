@@ -1,0 +1,125 @@
+@keyframes sideLeft
+{
+	0%
+	{
+		left: 200%;
+	}
+
+	100%
+	{
+		left: 50%;
+	}
+}
+
+
+
+.mainWrap
+{
+	/*padding: 1em;*/
+	font-family: 'UberMove', 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.phoneViewImage, .description
+{
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.description
+{
+	padding: 0.5em 1.5em 5em 1.5em;
+}
+
+.description h2
+{
+	font-size: 2em;
+	font-weight: 500;
+	padding: 0.5em 0 1em 0;
+	color: #333333;
+}
+
+.description p
+{
+	font-size: 1.1em;
+	padding: 0.3em 0;
+	color: #404040;
+}
+
+
+@media (min-width: 1000px)
+{
+	body
+	{
+		overflow-x: hidden;
+	}
+	.phoneViewImage, .descriptionSection
+	{
+		width: 100%;
+		height: 45em;
+	}
+	
+	.descriptionSection:nth-of-type(even) .phoneViewImage
+	{
+		display: none;
+	}
+
+	.descriptionSection:nth-of-type(even) .description
+	{
+		text-align: center;
+		font-size: 2em;
+		padding: 0;
+	}
+
+	.descriptionSection:nth-of-type(even) .description h2
+	{
+		
+		padding-top: 2.5em;
+	}
+	
+	.descriptionSection:nth-of-type(odd)
+	{
+		position: relative;
+	}
+
+	.descriptionSection:nth-of-type(odd) .description
+	{
+		position: absolute;
+		width: 50%;
+		top: 0;
+		background-color: #eee;
+		font-size: 1.2em;
+	}
+
+	.descriptionSection:nth-of-type(1) .description
+	{
+		padding-top: 10em;
+		background-color: rgba(230,230,230,0.9);
+		left: -100%;
+		width: 50%;
+		height: 100%;
+		animation: sideLeft 1.5s ease 0.5s;
+		animation-fill-mode: forwards;
+		overflow-x: hidden;
+	}
+
+	
+	.descriptionSection:nth-of-type(3) .description
+	{
+		top: 8em;
+		left: 26%;
+		background-color: rgba(200,200,200,0.5);
+	}
+
+	.descriptionSection:nth-of-type(5) .description
+	{
+		top: 8em;
+		left: 8em;
+		background-color: transparent;
+	}
+
+}
+
+
+
+/*animation*/
+
