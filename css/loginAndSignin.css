@@ -1,28 +1,169 @@
-.mainWrap
+@keyframes rotate
+{
+	0%
+	{
+		transform: rotate(0deg);
+	}
+	
+	100%
+	{
+		transform: rotate(360deg);
+	}
+}
+
+
+@keyframes appear
+{
+	0%
+	{
+		transform: translateY(-100vh);
+		opacity: 0.8;
+		background-color: #102001;
+	}
+	
+	70%
+	{
+		transform: translateY(0%);
+		opacity: 0.9;
+	}
+
+	100%
+	{
+		
+		opacity: 1;
+		background-color: #fff;
+	}
+}
+
+
+@keyframes appear2
+{
+	0%
+	{
+		transform: translateX(-100vh);
+		opacity: 0.8;
+		background-color: #102001;
+	}
+	
+	70%
+	{
+		transform: translateX(0%);
+		opacity: 0.9;
+	}
+
+	100%
+	{
+		
+		opacity: 1;
+		background-color: #fff;
+	}
+}
+
+main h2
+{
+	width: 100%;
+	text-align: center;
+	font-size: 2em;
+	padding-top: 2em;
+	font-weight: 700;
+	font-family: lato,sans-serif;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 1em;
+	/*color: #fff;*/
+}
+
+main
+{
+	/*background-image: linear-gradient(45deg, #EFC17E, #F1AEA1);*/
+	animation: appear2 0.8s;
+}
+
+main .waiting
+{
+	text-align: center;
+	font-size: 1.6em;
+	padding-top: 1em;
+	color: #808080;
+}
+
+main .waiting span
+{
+	padding-right: 0.5em;
+}
+
+main .waiting i
+{
+	animation: rotate 1.5s linear 0s infinite normal;
+}
+
+.option
 {
 	width: 100%;
 	height: 80vh;
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	justify-content: flex-start;
 	align-items: center;
 	/*background-image: url("../image/yellowWhite.jpg");*/
-	/*background-image: linear-gradient(45deg, #FFB95E, #F35C70);*/
+	
 /*	background-position: center left;*/
 	/*background-color: #eee;*/
 }
 
-.mainWrap button
+.option a
 {
-	width: 30%;
-	/*background-color: #f0f0f0f0;*/
-	/*padding: 2em;*/
+	box-sizing: border-box;
+	text-decoration: none;
+	/*color: #101010;*/
+	width: 90%;
+	background-color: #f3f2f1;
+	padding: 1em;
 	/*color: white;*/
 	font-size: 2em;
 	cursor: pointer;
-	height: 3em;
 	text-align: center;
-	margin: 0 3em;
-	border-radius: 2em;
-	/*background-image: linear-gradient(45deg, #920468, #158301);*/
+	margin: 1em 0;
+	
+	/*background-image: linear-gradient(45deg, #887240, #621445);*/
+	/*background-color: #78C4E0;*/
+	/*border-radius: 1em;*/
 }
 
+.option a:visited
+{
+	color: #000;
+}
+
+@media (min-width: 1000px)
+{
+
+	main
+	{
+		/*background-image: linear-gradient(45deg, #EFC17E, #F1AEA1);*/
+		animation: appear 0.8s;
+	}
+
+	main h2
+	{
+		width: 70%;
+		font-size: 3em;
+		margin: auto auto;
+		border-bottom: 1px solid #505050;
+	}
+	.option
+	{
+		flex-direction: row;
+		width: 100%;
+		justify-content: center;
+		align-items: flex-start;
+		padding-top: 8em;
+		height: 60vh;
+	}
+
+	.option a
+	{
+		width: 30%;
+		margin: 0 3em;
+		font-family: lato,sans-serif;
+	}
+}
