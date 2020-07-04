@@ -6,13 +6,16 @@
 	<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
 	<base href="../" />
 	
-	<title>Lber tutor</title>
+	<title>Lber sign in</title>
 	<link rel="icon" href="image/logo.png" type="image/x-icon"/> 
 	<link rel="stylesheet" type="text/css" href="css/gobal.css">
 	<link href="css/all.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/loginAndSignin.css">
 
 	<script type="text/javascript" src = "js/jQuery.min.js"></script>
 	<script type="text/javascript" src = "js/phoneNavList.js"></script>
+	<script type="text/javascript" src = "js/formValidationAPI.js"></script>
+	<script type="text/javascript" src = "js/signinCheck.js"></script>
 </head>
 <body>
 
@@ -45,6 +48,78 @@
 		<!-- --------------------------------------------------------------------------------- -->
 
 		<main>
+			<div class = "mainWrap">
+				<h2>Driver Sign in</h2>
+				
+
+				<form action = "" method = "POST">
+
+					<div class = "hasAccountBefore">
+						<label for  = "hasAccount">
+							Do you have a customer account before?
+						</label>
+						<select name = "hasAccount" id = "hasAccount">
+							<option>yes</option>
+							<option selected="selected">no</option>
+						</select>
+					</div>
+
+					<div class = "personalInformation">
+						<div class = "firstName">
+							<label for = "firstName">first name: </label>
+							<input type="text" name="firstName" required="required" pattern="[a-zA-Z]{1,}" id = "firstName">
+						</div>
+
+						<div class = "lastName">
+							<label for = "lastName">last name: </label>
+							<input type="text" name="lastName" required="required" pattern="[a-zA-Z]{1,}" id = "lastName">
+						</div>
+						
+						<div class = "age">
+							<label for = "age">age: </label>
+							<input type="number" name="age" required="required" min = "1" max = "150" id = "age">
+						</div>
+
+						<div class = "birthDate">
+							<label for = "birthDate">birth date </label>
+							<input type="date" name="birthDate" required="required" id = "birthDate">
+						</div>
+					</div>
+					
+
+					<div class = "email">
+						<label for = "email">email: </label>
+						<input type="text" name="email" pattern="\w+@\w+\.[a-z]{2,3}" id = "email">
+					</div>
+
+					<div class = "phone">
+						<label for = "phone">phone: </label>
+						<input type="number" name="phone" required="required"  minlength="8" maxlength="15" id = "phone">
+					</div>
+
+					
+
+					<div class = "userName">
+						<label for = "user">user name: </label>
+						<input type="text" name="user" required="required" minlength="1" id = "user">
+					</div>
+
+					<div class = "password">
+						<label for = "password">password: </label>
+						<input type="password" name="password" required="required"
+						minlength="1" id = "password">
+					</div>
+
+					<div class = "confirmPassword">
+						<label for = "confirmPassword">conform password: </label>
+						<input type="password" name="passwordConfirm" required="required" minlength="1" id = "confirmPassword">
+					</div>
+
+					<button class = "loginButton" type = "button">
+						sign in
+					</button>
+				</form>
+			</div>
 			
 		</main>
 

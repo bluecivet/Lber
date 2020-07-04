@@ -129,10 +129,64 @@ main .waiting i
 	/*border-radius: 1em;*/
 }
 
-.option a:visited
+.option a:visited, .option a:hover, .option a:link
 {
 	color: #000;
 }
+
+
+form
+{
+	box-sizing: border-box;
+	width: 100%;
+	padding: 1em 0;
+	font-size: 1.5em;
+	padding: 0 10%;
+	padding-bottom: 3em;
+}
+
+form > div, .personalInformation > div
+{
+	
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 1em 0;
+	
+}
+
+
+form > div > input, .personalInformation input 
+{
+	font-size: 0.7em;
+	margin: 0.5em 0;
+	padding: 0.5em;
+}
+
+form > button
+{
+	display: block;
+	font-size: 1em;
+	padding: 0.2em 2em;
+	background-color: #101010;
+	color: #fff;
+}
+
+.hasAccountBefore select
+{
+	font-size: 0.7em;
+	width: 50%;
+	margin-top: 0.5em;
+	padding: 0.5em;
+}
+
+.errorMessage
+{
+	color: #EE0000;
+}
+
+/*---------------------------------------------------------------------*/
 
 @media (min-width: 1000px)
 {
@@ -165,5 +219,41 @@ main .waiting i
 		width: 30%;
 		margin: 0 3em;
 		font-family: lato,sans-serif;
+	}
+
+	form
+	{
+		padding: 0 20%;
+		padding-bottom: 3em;
+	}
+
+
+	.personalInformation 
+	{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.personalInformation div
+	{
+		width: 24%;
+	}
+
+	.hasAccountBefore 
+	{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-start;
+		font-size: 1.2em;
+	}
+
+	.hasAccountBefore select
+	{
+		width: 10%;
+		margin-left: 2em;
+		margin-top: -0.05em;
+		padding: 0.3em;
 	}
 }

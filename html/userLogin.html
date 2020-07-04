@@ -6,13 +6,17 @@
 	<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
 	<base href="../" />
 	
-	<title>Lber tutor</title>
+	<title>Lber lon in</title>
 	<link rel="icon" href="image/logo.png" type="image/x-icon"/> 
 	<link rel="stylesheet" type="text/css" href="css/gobal.css">
 	<link href="css/all.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/loginAndSignin.css">
 
 	<script type="text/javascript" src = "js/jQuery.min.js"></script>
 	<script type="text/javascript" src = "js/phoneNavList.js"></script>
+	<script type="text/javascript" src = "js/formValidationAPI.js"></script>
+	<script type="text/javascript" src = "js/loginCheck.js"></script>
+
 </head>
 <body>
 
@@ -45,6 +49,26 @@
 		<!-- --------------------------------------------------------------------------------- -->
 
 		<main>
+			<div class = "mainWrap">
+				<h2>costumer Log in</h2>
+				
+
+				<form action = "" method = "POST">
+					<div class = "userName">
+						<label for = "user">user name: </label>
+						<input type="text" name="user" id = "user" minlength="1" maxlength="20" required="required">
+					</div>
+
+					<div class = "password">
+						<label for = "password">password: </label>
+						<input type="password" name="password" id = "password" minlength="3" maxlength="20" required="required">
+					</div>
+
+					<button class = "loginButton" type = "button">
+						log in
+					</button>
+				</form>
+			</div>
 			
 		</main>
 
