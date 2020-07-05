@@ -11,10 +11,12 @@
 	<link rel="stylesheet" type="text/css" href="css/panel.css">
 	<link href="css/all.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/indexStyle.css">
+	<link rel="stylesheet" type="text/css" href="css/displayArea.css">
 
 	<script type="text/javascript" src = "js/jQuery.min.js"></script>
 	<script type="text/javascript" src = "js/phonePanelNavList.js"></script>
 	<script type="text/javascript" src = "js/showPanel.js"></script>
+
 </head>
 <body>
 
@@ -53,7 +55,183 @@
 
 		<main>
 			<div class = mainWrap>
+				<div class = "displayArea">
+					
+					<div class = "placeOrder">
+						<h2>Place Your Order</h2>
+						<form class = "placeOrderForm" action="#" method="POST">
 
+							<div class = "orderName">
+								<label for = "orderName">order name:</label>
+								<input type="text" name="orderName" id = "orderName" maxlength="10">
+							</div>
+							
+							<div class = "carrying">
+								<label for = "carrying">carrying:</label>
+								<input type="text" name="carrying" id = "carrying" required="required">
+							</div>
+							
+							<div class = "deliveryDate">
+								<label for = "deliveryDate">delivery date:</label>
+								<input type="date" name="deliveryDate" id = 
+								"deliveryDate" required="required">
+							</div>
+
+							<div class = "fromCity">
+								<label for = "deliveryDate">from city:</label>
+								<input type="text" name="fromCity" id = 
+								"fromCity" required="required">
+							</div>
+
+							<div class = "fromAddress">
+								<label for = "deliveryDate">from address:</label>
+								<input type="text" name="fromAddress" id = 
+								"fromAddress" required="required">
+							</div>
+
+							<div class = "toCity">
+								<label for = "deliveryDate">to city:</label>
+								<input type="text" name="toCity" id = 
+								"toCity" required="required">
+							</div>
+
+							<div class = "toAddress">
+								<label for = "deliveryDate">to address:</label>
+								<input type="text" name="toAddress" id = 
+								"toAddress" required="required">
+							</div>
+							
+							<div class = "orderDiscription">
+								<label for = "orderDiscription" >description:</label>
+								<textarea col = "20" row = "10" name = "orderDiscription" id = "orderDiscription"></textarea>
+							</div>
+							
+							<div class = "buttonControl">
+								<button>place order</button>
+								<button type = "reset">reset</button>
+							</div>
+							
+							
+						</form>
+					</div>
+					<!-- end place order -->
+
+
+					<div class = "orderHistory">
+						<h2>Order History</h2>
+						<div class = "orders" role = "list">
+							<div class = "anOrder">
+								<div class = "orderName">
+									<label class = "orderLabel">order name: </label>
+									<label class = "labelContent">order1</label>
+								</div>
+			
+								<div class = "carrying">
+									<label class = "orderLabel">carrying: </label>
+									<label class = "labelContent">big box</label>
+								</div>
+								
+								<div class = "orderDate">
+									<label class = "orderLabel">order date: </label>
+									<label class = "labelContent">2020-07-05</label>
+								</div>
+
+								<div class = "deliveryDate">
+									<label class = "orderLabel">delivery date: </label>
+									<label class = "labelContent">2020-07-05</label>
+								</div>
+
+								<div class = "from">
+									<label class = "orderLabel">from: </label>
+									<address>2082 E25ave Vancouver BC Canada</address>
+								</div>
+
+								<div class = "to">
+									<label class = "orderLabel">to: </label>
+									<address>GuangZhou</address>
+								</div>
+
+								<div class = "orderDiscription">
+									<label class = "orderLabel">description</label>
+									<p class = "labelContent">adsf adf jioa jo oij oij oij oij oi jaosij foij qo iq qjoj qio joi oiij ioj qo jqo</p>
+								</div>
+
+								<button>delete</button>
+							</div>
+
+
+						</div>
+
+						<div class = "filpPage">
+							<ul>
+								<li role = "button"><a href="#"></a>1</li>
+								<li role = "button"><a href="#"></a>2</li>
+								<li role = "button"><a href="#"></a>3</li>
+							</ul>
+						</div>
+					</div>
+					
+					<!-- end of order history -->
+
+
+					<div class = "orderHistory">
+						<h2>Order History</h2>
+						<div class = "orders" role = "list">
+							<div class = "anOrder">
+								<div class = "orderName">
+									<label class = "orderLabel">order name: </label>
+									<label class = "labelContent">order1</label>
+								</div>
+					
+								<div class = "carrying">
+									<label class = "orderLabel">carrying: </label>
+									<label class = "labelContent">big box</label>
+								</div>
+								
+								<div class = "orderDate">
+									<label class = "orderLabel">order date: </label>
+									<label class = "labelContent">2020-07-05</label>
+								</div>
+
+								<div class = "deliveryDate">
+									<label class = "orderLabel">delivery date: </label>
+									<label class = "labelContent">2020-07-05</label>
+								</div>
+
+								<div class = "from">
+									<label class = "orderLabel">from: </label>
+									<address>2082 E25ave Vancouver BC Canada</address>
+								</div>
+
+								<div class = "to">
+									<label class = "orderLabel">to: </label>
+									<address>GuangZhou</address>
+								</div>
+
+								<div class = "orderDiscription">
+									<label class = "orderLabel">description</label>
+									<p class = "labelContent">adsf adf jioa jo oij oij oij oij oi jaosij foij qo iq qjoj qio joi oiij ioj qo jqo</p>
+								</div>
+
+								<button>delete</button>
+							</div>
+
+
+						</div>
+
+						<div class = "filpPage">
+							<ul>
+								<li role = "button"><a href="#"></a>1</li>
+								<li role = "button"><a href="#"></a>2</li>
+								<li role = "button"><a href="#"></a>3</li>
+							</ul>
+						</div>
+					</div>
+
+
+					<!-- end of current order -->
+
+				</div>
 				
 			</div>
 		</main>

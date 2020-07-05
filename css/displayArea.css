@@ -1,0 +1,253 @@
+/*user place order*/
+
+
+
+.displayArea h2
+{
+	font-size: 2.1em;
+	padding: 0.3em 0;
+	color: #494c4e;
+	font-weight: 500;
+	font-family: Lato,Lucida Sans Unicode,Lucida Grande,sans-serif;
+	text-align: center;
+}
+
+.placeOrder
+{
+	display: none;
+}
+.displayArea .placeOrderForm
+{
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.displayArea .placeOrderForm > div
+{
+	display: flex;
+	flex-direction: column;
+	width: 70%;
+	font-size: 1.7em;
+	padding: 1em 0;
+	margin: 0 auto;
+}
+
+.displayArea .placeOrderForm > div > input, 
+.displayArea .placeOrderForm > div > textarea
+{
+	font-size: 1em
+}
+
+.displayArea .placeOrderForm .orderDiscription
+{
+	height: 10em;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.displayArea .placeOrderForm  label
+{
+	padding-bottom: 0.5em;
+}
+
+.displayArea .placeOrderForm .orderDiscription textarea
+{
+	height: 10em;
+	width: 100%;
+	font-size: 0.8em;
+	padding: 0.5em;
+}
+
+.displayArea .placeOrderForm .buttonControl
+{
+	justify-content: center;
+	align-items: center;
+	padding-top: 0;
+}
+
+.buttonControl button
+{
+	font-size: 0.9em;
+	padding: 0.5em 1em;
+	margin: 1em;
+	color: #101010;
+	background-color: #f2f2f2;
+	border: 0px solid #fff;
+	width: 90%;
+}
+
+
+@media(min-width: 1000px)
+{	
+	.displayArea
+	{
+		padding: 0 10%;
+	}
+
+	.displayArea .placeOrderForm
+	{
+		padding: 1em 5%;
+	}
+	
+	.displayArea .placeOrderForm > div
+	{
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	
+	.displayArea .placeOrderForm  label
+	{
+		padding-bottom: 0em;
+	}
+
+	.displayArea .placeOrderForm .orderDiscription
+	{
+		height: 10em;
+		flex-direction: column;
+	}
+
+	.displayArea .placeOrderForm .orderDiscription label
+	{
+		padding-bottom: 1em;
+	}
+
+	.displayArea .placeOrderForm > div > input, 
+	.displayArea .placeOrderForm > div > textarea
+	{
+		font-size: 0.5em;
+		padding: 0.3em;
+		width: 60%;
+	}
+
+	 .displayArea .placeOrderForm .buttonControl
+	{
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.buttonControl button
+	{
+		width: 8em;
+	}
+}
+
+
+
+/*end user place order*/
+
+
+/*order history and current order*/
+
+.orderHistory, .currentOrder
+{
+	padding: 1em;
+	display: block;
+}
+
+
+.displayArea .anOrder
+{
+	width: 100%;
+	box-sizing: border-box;
+	padding: 1em;
+	border: 1px solid #aaa;
+	margin: 3em 0;
+}
+
+.anOrder .from,
+.anOrder .to
+{
+	display: flex;
+	flex-direction: column;
+}
+
+.anOrder button
+{
+	font-size: 1.5em;
+	width: 5em;
+	padding: 0.2em 0;
+	color: #101010;
+	background-color: #f0f0f0;
+	border: 0px solid #fff;
+}
+
+.displayArea .anOrder > div
+{
+	font-size: 1.5em;
+	padding: 0.5em;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.displayArea .anOrder .orderDiscription
+{
+	display: flex;
+	flex-direction: column;
+	/*border-bottom: none;*/
+	margin-bottom: 1em;
+}
+
+.displayArea .anOrder .labelContent
+{
+	margin-left: 0.1em;
+}
+
+.displayArea .anOrder .orderLabel
+{
+	display: inline-block;
+	width: 5.5em;
+}
+
+.displayArea .anOrder .orderDiscription .labelContent
+{
+	padding-top: 0.5em;
+	margin-left: 0em;
+}
+
+.filpPage ul
+{
+	display: flex;
+	flex-direction: row;
+	width: 80%;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+}
+
+.filpPage li
+{
+	list-style: none;
+	box-sizing: border-box;
+	border: 1px solid #000;
+	margin: 0 0.5em;
+	width: 2em;
+	height: 2em;
+	text-align: center;
+	line-height: 2em;
+	cursor: pointer;
+}
+
+@media(min-width: 1000px)
+{
+	.orderHistory, .currentOrder
+	{
+		padding: 1em;
+	}
+
+	.displayArea .anOrder .orderDiscription .labelContent
+	{
+		padding-left: 2em;
+	}
+
+	.displayArea .anOrder .orderLabel
+	{
+		width: 8em;
+	}
+
+	.anOrder .from, .anOrder .to
+	{
+		flex-direction: row;
+	}
+}
+
+
+/*end order history and current order*/
