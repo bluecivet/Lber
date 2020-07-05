@@ -49,7 +49,6 @@ function h5Validation(input, messageContainer, errorMessageSet)
 
 	let validity = input.validity;
 
-	console.log(validity);
 
 	let errorMessage = "";
 

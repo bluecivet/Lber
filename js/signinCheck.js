@@ -3,24 +3,24 @@ let ErrorMessage =
 [
 	// first name
 	{
-		valueMissing: "you must input your first name",
+		valueMissing: "empty??",
 	},
 
 	// last name
 	{
-		valueMissing: "you must input your last name",
+		valueMissing: "empty??",
 	},
 
 	// age
 	{
-		valueMissing: "you must input your age";
-		rangeUnderflow: "you really that old?",
-		rangeOverflow: "you really that young?"
+		valueMissing: "empty??",
+		rangeUnderflow: "too old?",
+		rangeOverflow: "too young?"
 	},
 
 	// birth date
 	{
-		valueMissing: "you must input your birth date",
+		valueMissing: "empty??",
 	},
 
 	// email 
@@ -30,10 +30,10 @@ let ErrorMessage =
 
 	// phone
 	{
-		valueMissing: "you must input your phone";
-		badInput: "come on you need number here";
-		tooShort: "Hey, at least 8 digit";
-		tooLong: "too many digit";
+		valueMissing: "you must input your phone",
+		badInput: "come on you need number here",
+		tooShort: "Hey, at least 8 digit",
+		tooLong: "too many digit"
 	},
 
 	// user name 
@@ -52,7 +52,7 @@ let ErrorMessage =
 
 	// confirm password
 	{
-		valueMissing: "you need to comfirm your password";
+		valueMissing: "you need to comfirm your password",
 		tooShort: "password must have at least 3 letters",
 		tooLong: "password should bot be longer than 20 letters"
 	}
@@ -80,7 +80,7 @@ $(function()
 
 	// init above array
 
-	for(let i = 0; i < personalSection.length; i++)
+	for(let i = 0; i < personalSection.children.length; i++)
 	{
 		formInputSections.push(personalSection.children[i]);
 
@@ -101,14 +101,14 @@ $(function()
 		formInputSections.push(form.children[i]);
 
 		// store input section value
-		generalMessage.push(form.children[i].children[0]);
+		generalMessage.push(form.children[i].children[0].innerHTML);
 	}
 
 	// finish init array 
 
 
 
-	$("#hasAccount").on("change", function)
+	$("#hasAccount").on("change", function()
 	{
 		let option = $(this).val();
 		if(option == "yes")
@@ -119,15 +119,17 @@ $(function()
 		else
 		{
 			checkPersonal = true;
-			$(".personalInformation input").attr("disabled", "");
+			$(".personalInformation input").removeAttr("disabled");
 		}
-	}
+	});
 
 
 
 	$("form .loginButton").on("click", function()
 	{
 		resetForm();
+
+		let isValide = true;
 
 		for(let i = 0; i < formInputSections.length; i++)
 		{
@@ -146,13 +148,18 @@ $(function()
 		for(let i = 0; i < inputValidation.length; i++)
 		{
 			if(inputValidation[i] == false)
-				return;
+			{
+				isValide = false;	// not return because we want final check
+				break;
+			}
 		}
-
 
 		//comfirm password
 		if(!finalCheck())
-			return false;
+			isValide = false;
+
+		if(!isValide)
+			return;
 
 		// if pass checking
 		form.submit();
@@ -178,8 +185,10 @@ function resetForm()
 
 function finalCheck()
 {
+	console.log("compare password")
 	if($(".password input").val() !== $(".confirmPassword input").val())
 	{
+		console.log("enter no equal");
 		$(".confirmPassword label").html("comfirm password: you enter a different passowrd");
 		$(".confirmPassword label").toggleClass("errorMessage");
 		return false;
