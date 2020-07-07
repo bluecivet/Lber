@@ -106,6 +106,24 @@ function h5Validation(input, messageContainer, errorMessageSet)
 		return false;
 	}
 
+	if(validity.rangeOverflow)
+	{
+		if(typeof(errorMessageSet.rangeOverflow) == "undefined")
+			createErrorMessage(messageContainer, defaultErrorMessageSet.rangeOverflow);
+		else
+			createErrorMessage(messageContainer, errorMessageSet.rangeOverflow);
+		return false;
+	}
+
+	if(validity.rangeUnderflow)
+	{
+		if(typeof(errorMessageSet.rangeUnderflow) == "undefined")
+			createErrorMessage(messageContainer, defaultErrorMessageSet.rangeUnderflow);
+		else
+			createErrorMessage(messageContainer, errorMessageSet.rangeUnderflow);
+		return false;
+	}
+
 	return true;
 }
 

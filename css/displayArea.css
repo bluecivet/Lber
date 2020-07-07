@@ -14,8 +14,28 @@
 
 .placeOrder
 {
+	display: block;
+}
+
+.placeOrder .errorMessageBox
+{
+	margin-top: 1em;
+	background-color: #eeffa1;
+	padding: 1em;
+	padding-left: 2em;
 	display: none;
 }
+
+.placeOrder .errorMessageBox ul li
+{
+	width: 100%;
+	text-align: center;
+	font-size: 1.5em;
+	list-style: none;
+	padding: 0.2em 0;
+}
+
+
 .displayArea .placeOrderForm
 {
 	box-sizing: border-box;
@@ -74,6 +94,7 @@
 	background-color: #f2f2f2;
 	border: 0px solid #fff;
 	width: 90%;
+	cursor: pointer;
 }
 
 
@@ -82,6 +103,17 @@
 	.displayArea
 	{
 		padding: 0 10%;
+	}
+
+	.placeOrder .errorMessageBox
+	{
+		width: 40%;
+		margin: 0 auto;
+	}
+
+	.placeOrder .errorMessageBox ul li
+	{
+		text-align: left;
 	}
 
 	.displayArea .placeOrderForm
@@ -119,6 +151,11 @@
 		width: 60%;
 	}
 
+	.displayArea .placeOrderForm > div > input
+	{
+		font-size: 0.7em;
+	}
+
 	 .displayArea .placeOrderForm .buttonControl
 	{
 		justify-content: center;
@@ -137,6 +174,7 @@
 
 
 /*order history and current order*/
+
 
 .orderHistory, .currentOrder
 {
@@ -226,6 +264,16 @@
 	cursor: pointer;
 }
 
+.orderHistory
+{
+	display: none;
+}
+
+.currentOrder
+{
+	display: none;
+}
+
 @media(min-width: 1000px)
 {
 	.orderHistory, .currentOrder
@@ -251,3 +299,152 @@
 
 
 /*end order history and current order*/
+
+
+
+/*this is personal setting*/
+/*this code I direct copy from css/loginAndSignin.css*/
+
+
+.personalSetting form
+{
+	box-sizing: border-box;
+	width: 100%;
+	padding: 1em 0;
+	font-size: 1.5em;
+	padding: 0 10%;
+	padding-bottom: 3em;
+}
+
+.personalSetting form > div
+{
+	
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 1em 0;
+	
+}
+
+
+.personalSetting form > div > input
+{
+	font-size: 0.7em;
+	margin: 0.5em 0;
+	padding: 0.5em;
+}
+
+.personalSetting form > button
+{
+	display: block;
+	font-size: 1em;
+	padding: 0.2em 2em;
+	background-color: #101010;
+	color: #fff;
+	cursor: pointer;
+}
+
+
+.errorMessage
+{
+	color: #EE0000;
+}
+
+input:-internal-autofill-selected {
+    -webkit-appearance: menulist-button;
+    background-color: rgba(232, 240, 254, 0) !important;
+    background-image: none !important;
+    color: -internal-light-dark-color(black, white) !important;
+}
+
+input:-webkit-autofill{
+    box-shadow: 0 0 0 23px #fff inset !important;
+    border: 1px solid #000 !important;
+}
+/*---------------------------------------------------------------------*/
+
+@media (min-width: 1000px)
+{
+	.personalSetting form
+	{
+		padding: 0 20%;
+		padding-bottom: 3em;
+	}
+
+}
+
+
+.personalSetting
+{
+	display: none;
+}
+
+/*end of personal setting*/
+
+
+
+/*banking */
+/*this code is copy above you not writing together because people want to change it */
+
+.banking form
+{
+	box-sizing: border-box;
+	width: 100%;
+	padding: 1em 0;
+	font-size: 1.5em;
+	padding: 0 10%;
+	padding-bottom: 3em;
+}
+
+.banking form > div
+{
+	
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 1em 0;
+	
+}
+
+
+.banking form > div > input
+{
+	font-size: 0.7em;
+	margin: 0.5em 0;
+	padding: 0.5em;
+}
+
+.banking form > button
+{
+	display: block;
+	font-size: 1em;
+	padding: 0.2em 2em;
+	background-color: #101010;
+	color: #fff;
+	cursor: pointer;
+}
+
+.banking
+{
+	display: none;
+}
+
+
+@media (min-width: 1000px)
+{
+	.banking form
+	{
+		padding: 0 20%;
+		padding-bottom: 3em;
+	}
+
+}
+
+/*end of banking*/
+
+
+
+
+

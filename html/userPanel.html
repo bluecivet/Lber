@@ -13,9 +13,12 @@
 	<link rel="stylesheet" type="text/css" href="css/indexStyle.css">
 	<link rel="stylesheet" type="text/css" href="css/displayArea.css">
 
+
 	<script type="text/javascript" src = "js/jQuery.min.js"></script>
 	<script type="text/javascript" src = "js/phonePanelNavList.js"></script>
 	<script type="text/javascript" src = "js/showPanel.js"></script>
+	<script type="text/javascript" src = "js/formValidationAPI.js"></script>
+	<script type="text/javascript" src = "js/panelFormErrorHandle.js"></script>
 
 </head>
 <body>
@@ -41,11 +44,11 @@
 
 			<div class = "panelOption">
 				<ul class = "navList" role = "menu">
-					<li class = "active"><span>Place Order</span> </li>
-					<li><span>Order History</span> </li>
-					<li><span>Current Order</span> </li>
-					<li><span>Personal Setting</span> </li>
-					<li><span>Banking</span></li>
+					<li data-index = "0" class = "active"><span>Place Order</span> </li>
+					<li data-index = "1"><span>Order History</span> </li>
+					<li data-index = "2"><span>Current Order</span> </li>
+					<li data-index = "3"><span>Personal Setting</span> </li>
+					<li data-index = "4"><span>Banking</span></li>
 				</ul>
 			</div>
 
@@ -59,6 +62,13 @@
 					
 					<div class = "placeOrder">
 						<h2>Place Your Order</h2>
+
+						<div class = "errorMessageBox">
+							<ul>
+								
+							</ul>
+						</div>
+
 						<form class = "placeOrderForm" action="#" method="POST">
 
 							<div class = "orderName">
@@ -107,7 +117,7 @@
 							</div>
 							
 							<div class = "buttonControl">
-								<button>place order</button>
+								<button type = "button" class = "placeOrderButton">place order</button>
 								<button type = "reset">reset</button>
 							</div>
 							
@@ -173,7 +183,6 @@
 					
 					<!-- end of order history -->
 
-
 					<div class = "orderHistory">
 						<h2>Order History</h2>
 						<div class = "orders" role = "list">
@@ -227,9 +236,69 @@
 							</ul>
 						</div>
 					</div>
+					
 
 
 					<!-- end of current order -->
+
+
+					<div class = "personalSetting">
+						<h2>Personal Setting</h2>
+						<form action = "" method="POST">		
+
+							<div class = "email">
+								<label for = "email">email: </label>
+								<input type="text" name="email" pattern="\w+@\w+\.[a-z]{2,3}" id = "email">
+							</div>
+
+							<div class = "phone">
+								<label for = "phone">phone: </label>
+								<input type="text" name="phone" required="required" maxlength="15" id = "phone" pattern="[0-9]{8,15}">
+							</div>
+
+							
+
+							<div class = "userName">
+								<label for = "user">user name: </label>
+								<input type="text" name="user" required="required" minlength="1" id = "user">
+							</div>
+
+							<div class = "password">
+								<label for = "password">password: </label>
+								<input type="password" name="password" required="required"
+								minlength="1" id = "password">
+							</div>
+
+							<div class = "confirmPassword">
+								<label for = "confirmPassword">conform password: </label>
+								<input type="password" name="passwordConfirm" required="required" minlength="1" id = "confirmPassword">
+							</div>
+
+							<button class = "doneButton" type = "button">
+								done
+							</button>
+						</form>
+					</div>
+
+					<!-- end of personal setting -->
+
+
+					<div class = "banking">
+						<h2>Banking</h2>
+						<form action = "" method="post">
+							<div class = "adding Money">
+								<label for = "addingMoney">adding money:</label>
+								<input type="number" name="addingMoney" id = "addingMoney" required="required" min = "0">
+							</div>
+
+							<div class = "creditCard">
+								<label for = "creditCard">credit card number:</label>
+								<input type="text" name="creditCard" id = "credit" required="required" pattern="^[0-9]{12,20}$">
+							</div>
+
+							<button type = "button" class = "addValueButton">add value</button>
+						</form>
+					</div>
 
 				</div>
 				
