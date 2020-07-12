@@ -52,7 +52,7 @@
 				<h2>costumer Sign in</h2>
 				
 
-				<form action = "" method = "POST">
+				<form id = "userSigninForm" action = "./php/signin/userSignin.php" method = "POST">
 
 					<div class = "hasAccountBefore">
 						<label for  = "hasAccount">
@@ -86,6 +86,10 @@
 						</div>
 					</div>
 					
+					<div class = "signinUserName">
+						<label for = "signinDriverName">driver name: </label>
+						<input type="text" name="signinDriverName" id = "signinDriverName" required="required">
+					</div>
 
 					<div class = "email">
 						<label for = "email">email: </label>

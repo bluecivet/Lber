@@ -188,6 +188,11 @@ form > button
 	color: #EE0000;
 }
 
+.signinUserName
+{
+	display: none;
+}
+
 input:-internal-autofill-selected {
     -webkit-appearance: menulist-button;
     background-color: rgba(232, 240, 254, 0) !important;

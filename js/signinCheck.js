@@ -23,6 +23,10 @@ let ErrorMessage =
 		valueMissing: "empty??",
 	},
 
+	{
+		valueMissing: "you have enter a name",
+	},
+
 	// email 
 	{
 		patternMismatch: "this is not a correct email format",
@@ -105,22 +109,16 @@ $(function()
 	}
 
 	// finish init array 
-
+	initForm();
+	
+	// user do not have account by default 
+	// so remove attr first in order to pass check
+	$(".signinUserName input").removeAttr("required");
 
 
 	$("#hasAccount").on("change", function()
 	{
-		let option = $(this).val();
-		if(option == "yes")
-		{
-			checkPersonal = false;
-			$(".personalInformation input").attr("disabled", "disabled");
-		}
-		else
-		{
-			checkPersonal = true;
-			$(".personalInformation input").removeAttr("disabled");
-		}
+		initForm();
 	});
 
 
@@ -140,8 +138,11 @@ $(function()
 				continue;
 			}
 
+
 			// use api to check then store in inputValidation
 			inputValidation[i] = LberInputCheck(formInputSections[i], ErrorMessage[i], generalMessage[i]);
+			console.log(formInputSections[i]);
+			console.log(inputValidation[i]);
 		}
 
 		// checking in here
@@ -158,15 +159,89 @@ $(function()
 		if(!finalCheck())
 			isValide = false;
 
+		console.log(isValide);
 		if(!isValide)
 			return;
 
 		// if pass checking
-		form.submit();
+		submitForm(form);	// using ajax to submit
 	});
 
 	
 });
+
+
+function initForm()
+{
+	let option = $("#hasAccount").val();
+	if(option == "yes")
+	{
+		console.log("yes");
+		checkPersonal = true;
+		$(".personalInformation input").attr("disabled", "disabled");
+		$(".personalInformation input").val("");
+		$(".signinUserName").css("display", "flex");
+		$(".signinUserName input").attr("required", "required");
+		$(".email").css("display", "none");
+		$(".email input").removeAttr("required");
+		$(".phone").css("display", "none");
+		$(".phone input").removeAttr("required");
+	}
+	else
+	{
+		checkPersonal = false;
+		$(".personalInformation input").removeAttr("disabled");
+		$(".signinUserName").css("display", "none");		
+		$(".signinUserName input").removeAttr("required");
+		$(".email").css("display", "none");
+		$(".email").css("display", "flex");
+		$(".email input").attr("required", "required");
+		$(".phone").css("display", "flex");
+		$(".phone input").attr("required", "required");
+	}
+}
+
+
+
+function submitForm(form)
+{
+	let url = "";
+	let formType = form.id;
+
+	if(formType == "userSigninForm")
+		url = "./php/signin/userSignin.php";
+	else if(formType == "driverSigninForm")
+		url = "./php/signin/driverSignin.php";
+
+	formData = new FormData(form);
+
+	$.ajax(
+	{
+		url: url,
+		type: "POST",
+		date: formData,
+		success: function(response)
+		{
+			// if submit success 
+			if(response == "good")
+			{
+				window.location.replace("html/login.html");
+				return;
+			}
+
+			// if for submit not success will return error message
+			let errObj = JSON.parse(response);
+
+			for(key in errObj)
+			{
+				let labelClass = key + " label";
+				$(labelClass).html(errObj[key]);
+				$(labelClass).toggleClass("errorMessage");
+			}
+		}
+	})
+}
+
 
 
 // the below should be a pair
@@ -185,7 +260,9 @@ function resetForm()
 
 function finalCheck()
 {
-	console.log("compare password")
+	console.log("compare password88")
+	console.log($(".password input").val());
+	console.log($(".confirmPassword input").val());
 	if($(".password input").val() !== $(".confirmPassword input").val())
 	{
 		console.log("enter no equal");
