@@ -1,9 +1,12 @@
 <?php 
 	
+	define("start", 3);
+	define("length", 8);
+
 	class TokenUtil
 	{
-		const start = 3;
-		const length = 8;
+		// const start = 3;
+		// const length = 8;
 
 		private $payloadMap;
 		private $headerMap;
@@ -41,6 +44,8 @@
 			// cover string header, payload to map data struture
 			$this->headerMap = $this->converToMap($decodeHeader, "&");	
 			$this->payloadMap = $this->converToMap($decodePayload, "&");
+
+			vertifyToken($this->headerMap, $this->payloadMap, $decodeHeader, $decodePayload, $signiture)
 		}
 
 		// from here to you see the next "///////////////" is encryption for sending token
@@ -120,13 +125,13 @@
 
 		//--------------------------------------------------------------------
 
-		public function vertifyToken($token)
+		public function vertifyToken($headerMap, $payloadMap, $decodeHeader, $decodePayload, $signiture)
 		{
 			// vertify token
 			if(!$this->vertifyHeader($headerMap) || !$this->vertifyPayload($payloadMap) || !$this->vertifySigniture($decodeHeader, $decodePayload, $signiture))
 			{
 				echo "verifing Error";
-				exit("error");
+				exit("token verrifiing error");
 			}
 		}
 

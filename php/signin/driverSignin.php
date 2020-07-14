@@ -2,15 +2,14 @@
 	require_once "../database/lberDatabaseOperation.php";
 	require_once "../form/formUtil.php";
 
-	var_dump($_POST);
-	echo endl;
+	// var_dump($_POST);
+	// echo endl;
 
 	if($_SERVER["REQUEST_METHOD"] == "POST")
 	{
 		if(checkSigninForm("driver"))
 		{
 			// if everything is seted then procee to database
-			echo "enter user sign in function" . endl;
 			driverSignin($_POST);
 		}
 

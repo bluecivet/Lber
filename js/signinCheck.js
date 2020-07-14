@@ -141,8 +141,7 @@ $(function()
 
 			// use api to check then store in inputValidation
 			inputValidation[i] = LberInputCheck(formInputSections[i], ErrorMessage[i], generalMessage[i]);
-			console.log(formInputSections[i]);
-			console.log(inputValidation[i]);
+
 		}
 
 		// checking in here
@@ -176,7 +175,6 @@ function initForm()
 	let option = $("#hasAccount").val();
 	if(option == "yes")
 	{
-		console.log("yes");
 		checkPersonal = true;
 		$(".personalInformation input").attr("disabled", "disabled");
 		$(".personalInformation input").val("");
@@ -213,15 +211,24 @@ function submitForm(form)
 	else if(formType == "driverSigninForm")
 		url = "./php/signin/driverSignin.php";
 
-	formData = new FormData(form);
+	
+	let formData = new FormData(form);
 
 	$.ajax(
 	{
 		url: url,
 		type: "POST",
-		date: formData,
+		data: formData,
+		processData: false, 
+    	contentType: false, 
+    	error: function(response)
+    	{
+    		console.log(response.responseText);
+    	},
+
 		success: function(response)
 		{
+			console.log(response);
 			// if submit success 
 			if(response == "good")
 			{
@@ -230,15 +237,24 @@ function submitForm(form)
 			}
 
 			// if for submit not success will return error message
-			let errObj = JSON.parse(response);
-
-			for(key in errObj)
+			try
 			{
-				let labelClass = key + " label";
-				$(labelClass).html(errObj[key]);
-				$(labelClass).toggleClass("errorMessage");
+				let errObj = JSON.parse(response);
+
+				for(key in errObj)
+				{
+					let labelClass = "." + key + " label";
+					$(labelClass).html(errObj[key]);
+					$(labelClass).toggleClass("errorMessage");
+				}
+			}
+			catch(e)
+			{
+				console.log(response);
 			}
 		}
+
+		
 	})
 }
 

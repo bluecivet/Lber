@@ -2,16 +2,14 @@
 	require_once "../database/lberDatabaseOperation.php";
 	require_once "../form/formUtil.php";
 
-	var_dump($_POST);
-	echo endl;
-
+	//var_dump($_POST);
+	// echo endl;
 	if($_SERVER["REQUEST_METHOD"] == "POST")
 	{
 		// check the form are filled and we have everything that is need 
 		if(checkSigninForm("user"))
 		{
 			// if everything is seted then procee to database
-			echo "enter user sign in function" . endl;
 			userSignin($_POST);
 		}
 	}
@@ -19,6 +17,7 @@
 	{
 		echo "can not get post requet";
 	}
+
 
 
 	// example request

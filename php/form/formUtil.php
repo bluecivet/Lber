@@ -33,12 +33,70 @@
 			}
 		}
 
+		if(!checkPerosonalInformation())
+			return false;
+
+		return true;
+	}
+
+
+
+	function checkLoginForm()
+	{
+		if(!isset($_POST["user"]))
+		{
+			echo "missing user name";
+			return false;
+		}
+
+		if(!isset($_POST["password"]))
+		{
+			echo "missing password";
+			return false;
+		}
+		return true;
+	}
+
+
+
+	function checkPlaceOrder()
+	{
+		if(!isset($_POST["carrying"]) || !isset($_POST["deliveryDate"]) )
+		{
+			echo "missing information";
+			return false;
+		}
+
+		if(!isset($_POST["fromCity"]) || !isset($_POST["fromAddress"]) || !isset($_POST["toCity"]) || !isset($_POST["toAddress"]))
+		{
+			echo "missing addresses";
+			return false;
+		}
+
+		return true;
+	}
+
+
+
+	function checkPerosonalInformation()
+	{
 		if(!isset($_POST["email"]) || !isset($_POST["phone"]) || !isset($_POST["user"]) || !isset($_POST["password"]))
 		{
 			echo "not enough information";
 			return false;
 		}
 
+		return true;
+	}
+
+
+	function checkAddingPoint()
+	{
+		if(!isset($_POST["addingMoney"]) || !isset($_POST["creditCard"]))
+		{
+			echo "not enough information";
+			return false;
+		}
 		return true;
 	}
  ?>
