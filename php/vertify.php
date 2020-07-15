@@ -30,7 +30,6 @@
 
 		public function __construct1($token)
 		{
-			echo "run consturctor 1" ;
 			$tokenArr = explode(".", $token);	// split token by . make it in head,s payload and signiture
 			
 			$header = $tokenArr[0];
@@ -45,7 +44,7 @@
 			$this->headerMap = $this->converToMap($decodeHeader, "&");	
 			$this->payloadMap = $this->converToMap($decodePayload, "&");
 
-			vertifyToken($this->headerMap, $this->payloadMap, $decodeHeader, $decodePayload, $signiture)
+			$this->vertifyToken($this->headerMap, $this->payloadMap, $decodeHeader, $decodePayload, $signiture);
 		}
 
 		// from here to you see the next "///////////////" is encryption for sending token

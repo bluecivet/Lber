@@ -1,0 +1,52 @@
+some extra thing we still can do
+
+1 websocket -- notify system for driver and user
+ 	when user post order driver can get it/
+ 	when driver set order user can set it
+
+2 error checking system --- better structor 
+	not only front end side also back end side 
+
+3 delete order button --- do it
+	user or driver click the button then the order will by deleteed in database
+
+4 conforim page --- do it
+	when reset the form or delete order
+	or other thing show a confirm page
+	the page ask yes or no
+
+
+5 fliping page in order history --- do it 
+	when show limited order 1 page may be 5 orders 
+	user can fliping page jump 
+
+
+6 php token system --- better structor 
+	when there are many copy and paste code 
+	get a better structor for this 
+	of course copy and paste because I worry the I will do different thing in the future
+
+
+7 spelling error --- fix if 
+	i make spelling error in the code like class name database name
+	try to fix it. it may be painful.
+
+
+8 add panel loading bar --- do it
+	try to add a loading bar for the page like panel 
+	it is easy just a pugin
+
+
+9 add wating animation --- do it
+	in panel waiting for data try to add a animation for it
+	should not be hard
+
+10 user head image --- do it
+	let user have a head image for themselt 
+	change in database and fix code 
+	I being lazy for this
+
+
+11 self description --- do it
+	I leave a space in database for user to talking about themselves.
+	try to fix the personal setting page and let user to enter something about themselves. 

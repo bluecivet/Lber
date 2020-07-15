@@ -1,7 +1,6 @@
 <?php 
 	
-	require_once "../database/lberDataOperation.php";
-
+	require_once "../database/lberDatabaseOperation.php";
 
 	if($_SERVER["REQUEST_METHOD"] == "GET")
 	{
@@ -9,6 +8,7 @@
 		{
 			$token = $_COOKIE["token"];
 			generalSetup("user", $token);
+
 		}
 		else
 		{

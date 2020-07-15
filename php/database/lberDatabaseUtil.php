@@ -160,14 +160,14 @@
 	}
 
 
-	function updateGeneralUserByUserId($pdo, $userId $email, $phone)
+	function updateGeneralUserByUserId($pdo, $userId, $email, $phone)
 	{
 		$sql = "UPDATE generaluser SET email = ?, phone = ? WHERE userId = ?";
 		return update($pdo, $sql, $email, $phone, $userId);
 	}
 
 
-	function updateGeneralUserByDriverId($pdo, $driverId $email, $phone)
+	function updateGeneralUserByDriverId($pdo, $driverId, $email, $phone)
 	{
 		$sql = "UPDATE generaluser SET email = ?, phone = ? WHERE driverId = ?";
 		return update($pdo, $sql, $email, $phone, $driverId);
@@ -200,7 +200,7 @@
 	}
 
 
-	function insertOrder($pdo, $orderName, $carry, $deliveryDate $userId, $from, $to, $description)
+	function insertOrder($pdo, $orderName, $carry, $deliveryDate, $userId, $from, $to, $description)
 	{
 		$sql = "INSERT INTO orders(orderName, carring, placeOrderTime, deliveryDate, userId, waitingState, fromAddress, toAddress, description) VALUES (?,?,?,?,?,?,?,?,?)";
 
@@ -209,7 +209,7 @@
 		return update($pdo, $sql, $orderName, $carry, $time, $deliveryDate, $userId, 1, $from, $to, $description);
 	}
 
-	function insertCurrentOrder($pdo, $orderId, $orderName, $carry, $deliveryDate $userId, $from, $to, $description)
+	function insertCurrentOrder($pdo, $orderId, $orderName, $carry, $deliveryDate, $userId, $from, $to, $description)
 	{
 		$sql = "INSERT INTO currentorders(orderId, orderName, carring,  deliveryDate, userId, fromAddress, toAddress, description) VALUES (?,?,?,?,?,?,?,?)";
 
@@ -219,6 +219,6 @@
 	function getLastInsertId($pdo)
 	{
 		$sql = "SELECT LAST_INSERT_ID()";
-		return find($pdp, $sql);
+		return find($pdo, $sql)[0][0];
 	}
  ?>

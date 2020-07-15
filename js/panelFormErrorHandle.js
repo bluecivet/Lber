@@ -200,7 +200,8 @@ $(function()
 			$(".errorMessageBox").show();
 			return;
 		}
-		bankingform.submit();
+		
+		placeOrderFormSubmit(placeOrderForm);
 	});
 
 //----------------------------------------------------------------------------

@@ -234,8 +234,9 @@
 	{
 		$pdo = getPdo();
 		$tokenUtil = new TokenUtil($token);
+		
 		if(!checkToken($pdo, $userType, $tokenUtil))
-			return
+			return;
 
 		// pass validation 
 		$payload = $tokenUtil->getPayloadMap();
@@ -252,7 +253,6 @@
 
 	function checkToken($pdo, $userType, $tokenUtil)
 	{
-		
 		$payload = $tokenUtil->getPayloadMap();
 		$pdo = getPdo();
 		$userName = $payload["user"];
@@ -265,7 +265,7 @@
 
 		$databasePassword = getPassword($pdo, $userType, $userName);
 
-		if($passowrd !== $databasePassword)
+		if($password !== $databasePassword)
 		{
 			echo "password not match";
 			return false;
@@ -298,16 +298,21 @@
 		$fromAddress = $request["fromAddress"];
 		$toCity = $request["toCity"];
 		$toAddress = $request["toAddress"];
-		$description = $request["orderDescription"] ?? "";
+		$description = $request["orderDiscription"] ?? "";
 
 		$from = $fromAddress . " " . $fromCity;
 		$to = $toAddress . " " . $toCity;
+
+		$pdo = getPdo();
 		$userId = getUserIdFromUserInfo($pdo, $userName);
 
-		insertOrder($pdo, $orderName, $carry, $deliveryDate $userId, $from, $to, $description);
+		insertOrder($pdo, $orderName, $carry, $deliveryDate, $userId, $from, $to, $description);
+
 		$orderId = getLastInsertId($pdo);
 
-		insertCurrentOrder($pdo, $orderId, $orderName, $carry, $deliveryDate $userId, $from, $to, $description);
+		insertCurrentOrder($pdo, $orderId, $orderName, $carry, $deliveryDate, $userId, $from, $to, $description);
+
+		echo "good";
 	}
 
 
@@ -442,7 +447,7 @@
 
 		$userId = getUserIdFromUserInfo($pdo, $userName);
 		updateUserTableByUserId($pdo, $userId, $name, $passowrd, null);
-		updateGeneralUserByUserId($pdo, $userId $email, $phone);
+		updateGeneralUserByUserId($pdo, $userId, $email, $phone);
 
 		echo "good";
 	}
@@ -478,7 +483,7 @@
 
 		$driverId = getDriverIdFromDriverInfo($pdo, $driverName);
 		updateUserTableByDriverId($pdo, $driverId, $name, $passowrd, null, null);
-		updateGeneralUserByDriverId($pdo, $driverId $email, $phone);
+		updateGeneralUserByDriverId($pdo, $driverId, $email, $phone);
 
 		echo "good";
 	}
@@ -510,7 +515,7 @@
 			$result = getGeneralUserByUserId($pdo, $id);
 			$point = $result[0]["point"];
 			$point += $value;
-			updatePointInGeneralUserByUserId($pdo, $id, $value)
+			updatePointInGeneralUserByUserId($pdo, $id, $value);
 		}
 		else if($userType == "driver")
 		{
@@ -518,7 +523,7 @@
 			$result = getGeneralUserByDriverId($pdo, $id);
 			$point = $result[0]["point"];
 			$point += $value;
-			updatePointInGeneralUserByDriverId($pdo, $id, $value)
+			updatePointInGeneralUserByDriverId($pdo, $id, $value);
 		}
 
 		echo "good";
