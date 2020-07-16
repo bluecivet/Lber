@@ -146,16 +146,16 @@
 	}
 
 
-	function updateUserTableByUserId($pdo, $userId, $name, $passowrd, $description)
+	function updateUserTableByUserId($pdo, $userId, $name, $password, $description)
 	{
-		$sql = "UPDATE userinfo SET userName = ?, password = ?, selfDescription = ? where userId = ?";
+		$sql = "UPDATE userinfo SET userName = ?, password = ?, selfDescription = ? where id = ?";
 		return update($pdo, $sql, $name, $password, $description, $userId);
 	}
 
 
 	function updateDriverTableByDriverId($pdo, $driverId, $name, $passowrd, $description, $carType)
 	{
-		$sql = "UPDATE driverinfo SET driverName = ?, password = ?, selfDescription = ?, carType = ? where driverId = ?";
+		$sql = "UPDATE driverinfo SET driverName = ?, password = ?, selfDescription = ?, carType = ? where id = ?";
 		return update($pdo, $sql, $name, $password, $description, $carType, $driverId);
 	}
 

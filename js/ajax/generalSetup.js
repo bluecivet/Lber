@@ -1,11 +1,11 @@
 function generalPageSetup(userType)
 {
+	$(".displayArea").attr("data-userType", userType);
 	let url = "";
 	if(userType == "user")
 		url = "php/panel/userPanel.php";
 	else if(userType == "driver")
 		url = "php/panel/driverPanel.php";
-
 	
 	$.ajax(
 	{
@@ -62,21 +62,21 @@ function generalEventListenerSetup(userType)
 	// get personal setting
 	$(".panelOption > .navList > li[data-index='3']").on("click", function(event)
 	{
-		sendAjax(userType, "php/panel/getPersonalInformation.php", orderhistory);
+		sendAjax(userType, "php/panel/getPersonalInformation.php", getPersonalInformation);
 	});
 
 
-
-	// adding point
+	// get point  add point is in error handling
 	$(".panelOption > .navList > li[data-index='4']").on("click", function(event)
 	{
-		sendAjax(userType, "php/panel/addingPoint.php", orderhistory);
+		sendAjax(userType, "php/panel/currentPoint.php", currentPoint);
 	});
+
 
 
 	// change personal setting
 	$(".personalSetting .doneButton").on("click", function(event)
 	{
-		sendAjax(userType, "php/panel/changePersonalInformation.php", orderhistory);
-	})
+		//sendAjax(userType, "php/panel/changePersonalInformation.php", changePersonalInformation);
+	});
 }

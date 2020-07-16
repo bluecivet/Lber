@@ -431,6 +431,13 @@ input:-webkit-autofill{
 	display: none;
 }
 
+.banking .currentPoint
+{
+	font-size: 1.5em;
+	padding: 0.5em;
+	text-align: center;
+}
+
 
 @media (min-width: 1000px)
 {
@@ -439,7 +446,11 @@ input:-webkit-autofill{
 		padding: 0 20%;
 		padding-bottom: 3em;
 	}
-
+	
+	.banking .currentPoint
+	{
+		text-align: left;
+	}
 }
 
 /*end of banking*/

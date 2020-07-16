@@ -18,17 +18,20 @@ function sendAjax(userType, url, success)
 
 
 // submit place order
-function placeOrderFormSubmit(form)
+function formSubmit(form, url, success, userType)
 {
 	let formData = new FormData(form);
-	//formData.append("orderDiscription");
-	console.log(formData.get("orderDiscription"));
-	console.log($("#orderDiscription").val());
-	console.log($("#orderDiscription").html());
+
+	// check if a correct usertype is enter
+	if(userType == "driver")
+		formData.append("userType", "driver");
+	else if(userType == "user")
+		formData.append("userType", "user");
+
 	$.ajax(
 	{
 		type: "POST",
-		url: "php/panel/placeOrder.php",
+		url: url,
 		data: formData,
 		contentType: false,
 		processData: false,
@@ -38,7 +41,7 @@ function placeOrderFormSubmit(form)
 		},
 		success: function(response)
 		{
-			placeOrder(response);
+			success(response);
 		}
 	});
 }
@@ -105,21 +108,86 @@ function currentOrder(response)
 // function get personal setting
 function getPersonalInformation(response)
 {
+	try
+	{
+		let data = JSON.parse(response);
+		let userName = data.userName;
+		let email = data[0].email;
+		let phone = data[0].phone;
 
+		$(".personalSetting .email input").val(email);
+		$(".personalSetting .phone input").val(phone);
+		$(".personalSetting .userName input").val(userName);
+
+	}
+	catch(e)
+	{
+		console.log(response);
+	}
 }
 
 
 // function change personal setting
+// this function is when response success return
+// sending the form is in panelFormErrorHandle.js
 function changePersonalInformation(response)
 {
+	if(response == "good")
+	{
+		alert("your setting is changed");
+		window.location.replace("html/login.html");
+		return;
+	}
+	
+	try
+	{
+		let data = JSON.parse(response);
 
+		for(key in data)
+		{
+			let labelClass = ".personalSetting ."+key+ " label";
+			$(labelClass).html(data[key]);
+			$(labelClass).toggleClass("errorMessage");
+		}
+	}
+	catch(e)
+	{
+		console.log(response)
+	}
+}
+
+
+//
+function currentPoint(response)
+{
+	try 
+	{
+		let data = JSON.parse(response);
+		let point = data.point;
+		$(".banking .currentPointLabel").html(point);
+	}
+	catch(e)
+	{
+		console.log(response);
+	}
 }
 
 
 // adding point
 function addingPoint(response)
 {
-
+	if(response == "good")
+	{
+		alert("your point has been added!");
+		window.location.replace(window.location);
+		return;
+	}
+	else
+	{
+		alert("some error happend! please try again");
+		console.log(response);
+		return;
+	}
 }
 
 

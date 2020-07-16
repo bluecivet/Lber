@@ -201,7 +201,7 @@ $(function()
 			return;
 		}
 		
-		placeOrderFormSubmit(placeOrderForm);
+		formSubmit(placeOrderForm, "php/panel/placeOrder.php", placeOrder, 0);
 	});
 
 //----------------------------------------------------------------------------
@@ -227,7 +227,8 @@ $(function()
 			return;
 
 		// if pass checking
-		personalSettingform.submit();
+		let userType = $(".displayArea").attr("data-userType");
+		formSubmit(personalSettingform, "php/panel/changePersonalInformation.php", changePersonalInformation, userType);
 	});
 
 //----------------------------------------------------------------------------
@@ -242,7 +243,8 @@ $(function()
 		let isValide = bankingCheckUtil.validationCheck();
 		if(!isValide)
 			return;
-		bankingform.submit();
+		let userType = $(".displayArea").attr("data-userType");
+		formSubmit(bankingform, "php/panel/addingPoint.php", addingPoint, userType);
 	});
 
 

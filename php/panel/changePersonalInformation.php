@@ -3,7 +3,7 @@
 	require_once "../database/lberDatabaseOperation.php";
 	require_once "../form/formUtil.php";
 
-	if($_SERVER["REQUEST_METHOD"] == "GET")
+	if($_SERVER["REQUEST_METHOD"] == "POST")
 	{
 		if(checkPerosonalInformation())
 		{
@@ -11,8 +11,8 @@
 			{
 				$token = $_COOKIE["token"];
 				if($_POST["userType"] == "user")
-					changeUserPersonalInformation($token, $_POST)
-				else if($_POST["userType"] == "driver")
+					changeUserPersonalInformation($token, $_POST);
+				elseif($_POST["userType"] == "driver")
 					changeDriverPersonalInformation($token, $_POST);
 			}
 			else

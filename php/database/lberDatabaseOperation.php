@@ -439,14 +439,17 @@
 		$password = $request["password"];
 		$email = $request["email"];
 		$phone = $request["phone"];
-		if(getUserIdFromUserInfo($pdo, $name) != -1)
+
+		$databaseUserId = getUserIdFromUserInfo($pdo, $name);
+		$currentUserId = getUserIdFromUserInfo($pdo, $userName);
+		if($databaseUserId != -1 && $databaseUserId != $currentUserId)
 		{
-			echo '{"user":"user name exist already"}';
+			echo '{"userName":"user name exist already"}';
 			return;
 		}
 
 		$userId = getUserIdFromUserInfo($pdo, $userName);
-		updateUserTableByUserId($pdo, $userId, $name, $passowrd, null);
+		updateUserTableByUserId($pdo, $userId, $name, $password, null);
 		updateGeneralUserByUserId($pdo, $userId, $email, $phone);
 
 		echo "good";
@@ -492,10 +495,43 @@
 	//-----------------------------------------------------------
 
 
+	function getCurrentPoint($token, $userType)
+	{
+		$tokenUtil = new TokenUtil($token);
+		if(!checkToken($token, $userType, $tokenUtil))
+		{
+			echo "not validat user";
+			return;
+		}
+
+		$payload = $tokenUtil->getPayloadMap();
+		$name = $payload["user"];
+		$pdo = getPdo();
+
+		$id = -1;
+		$point = -1;
+		if($userType == "user")
+		{
+			$id = getUserIdFromUserInfo($pdo, $name);
+			$result = getGeneralUserByUserId($pdo, $id);
+			$point = $result[0]["point"];
+		}
+		else if($userType == "driver")
+		{
+			$id = getDriverIdFromDriverInfo($pdo, $name);
+			$result = getGeneralUserByDriverId($pdo, $id);
+			$point = $result[0]["point"];
+		}
+		echo '{"point":"'.$point.'"}';
+	}
+
+	//-----------------------------------------------------------
+
+
 	function addPoint($token, $userType, $request)
 	{
 		$tokenUtil = new TokenUtil($token);
-		if(!checkToken($token, "driver", $tokenUtil))
+		if(!checkToken($token, $userType, $tokenUtil))
 		{
 			echo "not validat user";
 			return;
@@ -515,7 +551,7 @@
 			$result = getGeneralUserByUserId($pdo, $id);
 			$point = $result[0]["point"];
 			$point += $value;
-			updatePointInGeneralUserByUserId($pdo, $id, $value);
+			updatePointInGeneralUserByUserId($pdo, $id, $point);
 		}
 		else if($userType == "driver")
 		{
