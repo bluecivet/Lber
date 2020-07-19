@@ -17,6 +17,7 @@ function sendAjax(userType, url, success)
 }
 
 
+
 // submit place order
 function formSubmit(form, url, success, userType)
 {
@@ -55,6 +56,11 @@ function placeOrder(response)
 		alert("your order is processed!");
 		window.location.assign(window.location);
 	}
+	else if(response == "noPoint")
+	{
+		alert("you do not have enough point");
+		alert("please try to add some point to your account");
+	}
 	else
 	{
 		console.log(response);
@@ -64,7 +70,7 @@ function placeOrder(response)
 
 // get order history
 function orderHistory(response)
-{
+{	
 	console.log(response);
 	try
 	{
@@ -72,9 +78,32 @@ function orderHistory(response)
 		for(let i = 0; i < data.length; i++)
 		{
 			let anOrder = generateOrder(data[i]);
+			//let deleteButton = $("<button class = 'deleteButton'>delete</button>");
+			//anOrder.append(deleteButton);
 			$(".orderHistory > .orders").append(anOrder);
-			console.log("finish append");
 		}
+
+		// $(".deleteButton").on("click", function()
+		// {
+		// 	let button = $(this);
+		// 	$.ajax(
+		// 	{
+		// 		type: "POST",
+		// 		url: "php/panel/deleteOrder.php",
+		// 		data: "userType="+$(".displayArea").attr("data-usertype")+"&orderId=" + $(this).parent().attr("data-orderId"),
+		// 		success: function(response)
+		// 		{
+		// 			if(response == "good")
+		// 			{
+		// 				button.parent().hide();
+		// 			}
+		// 			else
+		// 			{
+		// 				console.log(response);
+		// 			}
+		// 		}
+		// 	});
+		// });
 	}
 	catch(e)
 	{
@@ -88,6 +117,7 @@ function orderHistory(response)
 
 function currentOrder(response)
 {
+	let userType = $(".displayArea").attr("data-usertype");
 	try
 	{
 		let data = JSON.parse(response);
@@ -95,8 +125,46 @@ function currentOrder(response)
 		{
 			let anOrder = generateOrder(data[i]);
 			$(".currentOrder > .orders").append(anOrder);
-			console.log("finish append");
+
+			// for cancel button we still need to do other thing
+			// like notify system so for now I not doing it.
+			//let cancelButton = $("<button class = 'cancelButton'>cancel</button>");
+			if(userType == "driver")
+				continue;
+			let finishButton = $("<button class = 'finishButton'>finish</button>");
+			anOrder.append(finishButton);
+			//anOrder.append(cancelButton);
+			
 		}
+		
+		if(userType == "driver")
+			return
+		// $(".cancelButton").on("click", function()
+		// {
+
+		// });
+
+		$(".finishButton").on("click", function()
+		{
+			let button = $(this);
+			$.ajax(
+			{
+				type: "POST",
+				url: "php/panel/finishOrder.php",
+				data: "userType="+$(".displayArea").attr("data-usertype")+"&orderId=" + $(this).parent().attr("data-orderId"),
+				success: function(response)
+				{
+					if(response == "good")
+					{
+						button.parent().hide();
+					}
+					else
+					{
+						console.log(response);
+					}
+				}
+			});
+		});
 	}
 	catch(e)
 	{
@@ -192,6 +260,27 @@ function addingPoint(response)
 
 
 
+// get current order list in driver panel
+function currentOrderList(response, map, geocoder)
+{
+	console.log(response);
+	try 
+	{
+		let data = JSON.parse(response);
+		for(let i = 0; i < data.length; i++)
+		{
+			let anOrder = generateCurrentOrderListOrder(data[i], map, geocoder);
+			$(".currentOrderList .orderList").append(anOrder);
+		}
+	}
+	catch(e)
+	{
+		console.log(response);
+	}
+}
+
+
+
 ///////////////////////////////////////////////////////////////////////////
 
 
@@ -238,6 +327,12 @@ function generateOrder(data)
 			container: "address"
 		},
 		{
+			className : "driverAccept",
+			orderLabel: "accept: ",
+			labelContent: data.driverId == null ? "no" : "yes",
+			container: "label"
+		},
+		{
 			className : "orderDiscription",
 			orderLabel: "description",
 			labelContent: data.description,
@@ -245,7 +340,6 @@ function generateOrder(data)
 		}
 	];
 
-	console.log(section);
 
 	for(let i = 0; i < section.length; i++)
 	{
@@ -264,5 +358,132 @@ function generateOrder(data)
 		sectionBox.append(sectionContent);
 		anOrder.append(sectionBox);
 	}
+	anOrder.attr("data-orderId",data.orderId);
+	return anOrder;
+}
+
+
+
+
+function generateCurrentOrderListOrder(data, map, geocoder)
+{
+	console.log(data);
+	let anOrder = $("<div class = 'anOrder'></div>");
+	let section = 
+	[
+		{
+			className : "orderName", 
+			orderLabel: "order name: ", 
+			labelContent: data.orderName,
+			container: "label"
+		},
+		{
+			className : "carrying", 
+			orderLabel: "carrying: ", 
+			labelContent: data.carring,
+			container: "label"
+		},
+		{
+		   className : "deliveryDate",
+		   orderLabel: "delivery date:",
+		   labelContent: data.deliveryDate,
+		   container: "label"
+		},
+		{
+			className : "from", 
+			orderLabel: "from: ", 
+			labelContent: data.fromAddress,
+			container: "address"
+		},
+		{
+			className : "to",
+			orderLabel: "to: ",
+			labelContent: data.toAddress,
+			container: "address"
+		},
+		{
+			className : "orderDiscription",
+			orderLabel: "description",
+			labelContent: data.description,
+			container: "p"
+		}
+	];
+
+
+	for(let i = 0; i < section.length; i++)
+	{
+		let className = section[i].className;
+		let label = section[i].orderLabel;
+		let content = section[i].labelContent;
+		let container = section[i].container;
+
+		// create 
+		let sectionBox = $("<div class='"+className+"'></div>");
+		let sectionLabel = $("<label class = 'orderLabel'></label>");
+		sectionLabel.html(label);
+		let sectionContent = $("<"+container+" class = 'labelContent'></"+container+">");
+		sectionContent.html(content);
+		sectionBox.append(sectionLabel);
+		sectionBox.append(sectionContent);
+		anOrder.append(sectionBox);
+	}
+	anOrder.attr("data-orderId",data.orderId);
+
+	let acceptButton = $("<button> accept </button>");
+	let buttonGroup = $("<div class='buttonControl'></div>");
+	buttonGroup.append(acceptButton);
+	anOrder.append(buttonGroup);
+
+	// set marker on the map
+	let marker;
+	let infowindow
+	geocoder.geocode({"address":data.fromAddress}, function(results, state)
+	{
+		if(state==google.maps.GeocoderStatus.OK)
+		{
+			marker = new google.maps.Marker(
+			{
+	           map: map,
+	           position: results[0].geometry.location
+			});
+
+			infowindow = new google.maps.InfoWindow(
+			{
+		    	content: anOrder[0]
+		  	});
+
+			marker.addListener('click', function() 
+			{
+			     infowindow.open(map, marker);
+			    console.log("marker click");
+			 });
+		}
+	});
+
+	
+	acceptButton.on("click", function()
+	{
+		let button = $(this);
+		$.ajax(
+		{
+			type: "POST",
+			url: "php/panel/acceptOrder.php",
+			data: "userType="+$(".displayArea").attr("data-usertype")+"&orderId=" + $(this).parent().parent().attr("data-orderId"),
+			success: function(response)
+			{
+				if(response == "good")
+				{
+					alert("you accept an order!");
+					button.parent().parent().hide();
+					marker.setMap(null);
+					marker = null;
+				}
+				else
+				{
+					console.log(response);
+				}
+			}
+		});
+	})
 	return anOrder;
 }

@@ -185,24 +185,31 @@ CheckUtil.prototype =
 $(function()
 {
 	// inital place order error box 
-	$(".errorMessageBox").hide();
-	let placeOrderMessageBox = document.querySelector(".errorMessageBox ul");
-	initPlaceOrderErrorMessageBox(placeOrderMessageBox);
-
-	let placeOrderForm = document.querySelector(".placeOrder .placeOrderForm");
-	let placeOrderCheckUtil = new CheckUtil(placeOrderForm, placeOrderErrorMessage);
-
-	$(".placeOrder .placeOrderButton").on("click", function()
+	let userType = $(".displayArea").attr("data-userType");
+	console.log("user type = " + userType);
+	if(userType == "user")
 	{
-		let isValide = placeOrderCheckUtil.validationH5(placeOrderMessageBox.children);
-		if(!isValide)
+		console.log("enter place order")
+		$(".errorMessageBox").hide();
+		let placeOrderMessageBox = document.querySelector(".errorMessageBox ul");
+		initPlaceOrderErrorMessageBox(placeOrderMessageBox);
+
+		let placeOrderForm = document.querySelector(".placeOrder .placeOrderForm");
+		let placeOrderCheckUtil = new CheckUtil(placeOrderForm, placeOrderErrorMessage);
+
+		$(".placeOrder .placeOrderButton").on("click", function()
 		{
-			$(".errorMessageBox").show();
-			return;
-		}
-		
-		formSubmit(placeOrderForm, "php/panel/placeOrder.php", placeOrder, 0);
-	});
+			let isValide = placeOrderCheckUtil.validationH5(placeOrderMessageBox.children);
+			if(!isValide)
+			{
+				$(".errorMessageBox").show();
+				return;
+			}
+			
+			formSubmit(placeOrderForm, "php/panel/placeOrder.php", placeOrder, 0);
+		});
+	}
+	
 
 //----------------------------------------------------------------------------
 

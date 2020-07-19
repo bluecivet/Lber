@@ -457,5 +457,121 @@ input:-webkit-autofill{
 
 
 
+/*driver find order map*/
+.findOrder #orderMap
+{
+	width: 100%;
+	height: 25em;
+	margin-bottom: 3em;
+}
+
+.findOrder .currentCity
+{
+	padding: 0 0.9em;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-size: 1.5em;
+	margin-bottom: 3em;
+	padding-bottom: 3em;
+	border-bottom: 1px solid #aaa
+}
+
+.findOrder .currentCity input
+{
+	margin-top: 0.2em;
+	font-size: 1em;
+	padding: 0.1em;
+	text-align: center;
+}
+
+.findOrder .currentOrderList
+{
+	width: 100%;
+	/*overflow-x: hidden;*/
+}
+
+.findOrder .currentOrderList .anOrder > div
+{
+	display: flex;
+	flex-direction: column;
+	font-size: 1.1em;
+}
+
+.findOrder .currentOrderList .anOrder
+{
+	width: 100%;
+	display: grid;
+	grid-template-areas: "orderName carrying deliveryDate"
+						 "from . to"
+						 "orderDescription orderDescription orderDescription"
+						 "buttonControl buttonControl buttonControl";
+}
+
+.findOrder .currentOrderList .anOrder .orderName
+{
+	grid-area: orderName;
+}
+
+.findOrder .currentOrderList .anOrder .carrying
+{
+	grid-area: carrying
+}
+
+.findOrder .currentOrderList .anOrder .deliveryDate
+{
+	grid-area: deliveryDate;
+}
+
+
+.findOrder .currentOrderList .anOrder .from
+{
+	grid-area: from;
+}
+
+.findOrder .currentOrderList .anOrder .to
+{
+	grid-area: to;
+}
+
+
+.findOrder .currentOrderList .anOrder .orderDiscription
+{
+	grid-area: orderDescription;
+}
+
+.findOrder .currentOrderList .anOrder .buttonControl
+{
+	grid-area: buttonControl;
+}
+.findOrder .currentOrderList .anOrder .buttonControl button
+{
+	margin: 0;
+}
+
+@media (min-width: 1000px)
+{
+	.findOrder .currentCity
+	{
+		padding-bottom: 1em;
+	}
+
+	.findOrder .currentCity input
+	{
+		width: 30%;
+		margin: 1em auto;
+	}
+
+	.findOrder .currentOrderList .anOrder
+	{
+		grid-template-areas: "orderName carrying deliveryDate"
+						 "from from from"
+						 "to to to"
+						 "orderDescription orderDescription orderDescription"
+						 "buttonControl buttonControl buttonControl";
+	}
+}
+
 
 

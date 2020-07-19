@@ -7,7 +7,7 @@ some extra thing we still can do
 2 error checking system --- better structor 
 	not only front end side also back end side 
 
-3 delete order button --- do it
+3 cancel order button --- do it
 	user or driver click the button then the order will by deleteed in database
 
 4 conforim page --- do it
@@ -50,3 +50,8 @@ some extra thing we still can do
 11 self description --- do it
 	I leave a space in database for user to talking about themselves.
 	try to fix the personal setting page and let user to enter something about themselves. 
+
+12 change a way for operating order button --- fix it
+	I expose the order id to user and if user change the order id 
+	other order can be affect!!! 
+	for safety reason you should change it.

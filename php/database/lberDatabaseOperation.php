@@ -289,6 +289,17 @@
 
 		$payload = $tokenUtil->getPayloadMap();
 		$userName = $payload["user"];
+		$pdo = getPdo();
+
+		$userId = getUserIdFromUserInfo($pdo, $userName);
+		$result = getGeneralUserByUserId($pdo, $userId);
+		$point = $result[0]["point"];
+
+		if($point <= 0)
+		{
+			echo "noPoint";
+			return;
+		}
 
 		$order = Array();
 		$orderName = $request["orderName"] ?? "";
@@ -302,9 +313,6 @@
 
 		$from = $fromAddress . " " . $fromCity;
 		$to = $toAddress . " " . $toCity;
-
-		$pdo = getPdo();
-		$userId = getUserIdFromUserInfo($pdo, $userName);
 
 		insertOrder($pdo, $orderName, $carry, $deliveryDate, $userId, $from, $to, $description);
 
@@ -564,4 +572,116 @@
 
 		echo "good";
 	}
+
+
+
+	//---------------------------------------------------------------
+
+
+	function deleteOrder($token, $userType, $orderId)
+	{
+		$tokenUtil = new TokenUtil($token);
+		if(!checkToken($token, $userType, $tokenUtil))
+		{
+			echo "not validat user";
+			return;
+		}
+		$pdo = getPdo();
+		
+		deleteOrderInCurrentOrderById($pdo, $orderId);	
+		deleteOrderInOrderById($pdo, $orderId);
+		echo "good";
+	}
+
+
+	//---------------------------------------------------------------
+
+
+	function finishOrder($token, $userType, $orderId)
+	{
+		$tokenUtil = new TokenUtil($token);
+		if(!checkToken($token, $userType, $tokenUtil))
+		{
+			echo "not validat user";
+			return;
+		}
+		$payload = $tokenUtil->getPayloadMap();
+		$userName = $payload["user"];
+		$pdo = getPdo();
+
+		deleteOrderInCurrentOrderById($pdo, $orderId);
+		updateOrderStateByOrderId($pdo, $orderId, 1, 0);
+
+		// transation
+		$userId = getUserIdFromUserInfo($pdo, $userName);
+		$order = getOrderByOrderId($pdo, $orderId)[0];
+
+		// if the order is accepted by a driver
+		// we need to change both driver point and user point
+		if($order["driverId"] != NULL)
+		{
+			$driverId = $order["driverId"];
+			$user = getGeneralUserByUserId($pdo, $userId);;
+			$driver = getGeneralUserByDriverId($pdo, $driverId);
+			if($user[0]["generalId"] != $driver[0]["generalId"])
+			{
+				$userPoint = $user[0]["point"] - 50;
+				$driverPoint = $driver[0]["point"] + 50;
+				updatePointInGeneralUserByUserId($pdo, $userId, $userPoint);
+				updatePointInGeneralUserByDriverId($pdo, $driverId, $driverPoint);
+			}
+		}
+		
+		echo "good";
+	}
+
+
+
+	//------------------------------------------------------------
+
+
+	function getCurrentOrderList($token, $userType, $city)
+	{
+		$tokenUtil = new TokenUtil($token);
+		if(!checkToken($token, $userType, $tokenUtil))
+		{
+			echo "not validat user";
+			return;
+		}
+		$pdo = getPdo();
+		$result = getCurrentOrdersByCity($pdo, $city);
+		echo json_encode($result);
+	}
+
+
+
+	//------------------------------------------------------------
+
+
+	function acceptOrder($token, $userType, $orderId)
+	{
+		$tokenUtil = new TokenUtil($token);
+		if(!checkToken($token, $userType, $tokenUtil))
+		{
+			echo "not validat user";
+			return;
+		}
+
+		$payload = $tokenUtil->getPayloadMap();
+		$name = $payload["user"];
+		$pdo = getPdo();
+
+		$driverId = getDriverIdFromDriverInfo($pdo, $name);
+		if($driverId == -1)
+		{
+			echo "can not find driver";
+			return;
+		}
+
+		deleteOrderInCurrentOrderById($pdo, $orderId);
+		updateDriverIdInOrderByOrderId($pdo, $orderId, $driverId);
+		echo "good";
+	}
+
+
  ?>

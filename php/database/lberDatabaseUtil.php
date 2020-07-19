@@ -73,7 +73,7 @@
 
 	function getOrdersByUserId($pdo, $userId)
 	{
-		$sql = "SELECT * FROM orders WHERE userId = '". $userId ."'";
+		$sql = "SELECT * FROM orders WHERE userId = '". $userId ."' ORDER BY orderId DESC";
 		$result = find($pdo, $sql);
 		return $result;
 	}
@@ -81,15 +81,21 @@
 
 	function getOrdersByDriverId($pdo, $driverId)
 	{
-		$sql = "SELECT * FROM orders WHERE driverId = '". $driverId ."'";
+		$sql = "SELECT * FROM orders WHERE driverId = '". $driverId ."' ORDER BY orderId DESC";
 		$result = find($pdo, $sql);
 		return $result;
 	}
 
+	function getOrderByOrderId($pdo, $orderId)
+	{
+		$sql = "SELECT * FROM orders WHERE orderId = '". $orderId ."'";
+		$result = find($pdo, $sql);
+		return $result;
+	}
 
 	function getCurrentOrdersByUserId($pdo, $userId)
 	{
-		$sql = "SELECT * FROM orders WHERE userId = '". $userId ."' AND waitingState = 1 AND finishState = 0";
+		$sql = "SELECT * FROM orders WHERE userId = '". $userId ."' AND waitingState = 1 AND finishState = 0 ORDER BY orderId DESC";
 		$result = find($pdo, $sql);
 		return $result;
 	}
@@ -97,11 +103,18 @@
 
 	function getCurrentOrdersByDriverId($pdo, $driverId)
 	{
-		$sql = "SELECT * FROM orders WHERE driverId = '". $driverId ."' AND waitingState = 1 AND finishState = 0";
+		$sql = "SELECT * FROM orders WHERE driverId = '". $driverId ."' AND waitingState = 1 AND finishState = 0 ORDER BY orderId DESC";
 		$result = find($pdo, $sql);
 		return $result;
 	}
+	
 
+	function getCurrentOrdersByCity($pdo, $city)
+	{
+		$sql = "SELECT * FROM currentorders WHERE fromAddress LIKE '%".$city."%'";
+		$result = find($pdo, $sql);
+		return $result;
+	}
 
 	function getGeneralUserByUserId($pdo, $userId)
 	{
@@ -186,6 +199,18 @@
 		return update($pdo, $sql, $value, $driverId);
 	}
 
+	function updateOrderStateByOrderId($pdo, $orderId, $finish, $waiting)
+	{
+		$sql = "UPDATE orders SET finishState = ?, waitingState = ? WHERE orderId = ?";
+		return update($pdo, $sql, $finish, $waiting, $orderId);
+	}
+
+	function updateDriverIdInOrderByOrderId($pdo, $orderId, $driverId)
+	{
+		$sql = "UPDATE orders SET driverId = ? WHERE orderId = ?";
+		return update($pdo, $sql, $driverId, $orderId);
+	}
+
 	function createGeneraluserTable($pdo, $isCreateUser, $id, $firstName, $lastName, $age, $birthDate, $email, $phone)
 	{
 
@@ -215,6 +240,21 @@
 
 		return update($pdo, $sql, $orderId, $orderName, $carry, $deliveryDate, $userId, $from, $to, $description);
 	}
+
+	
+	function deleteOrderInOrderById($pdo, $orderId)
+	{
+		$sql = "DELETE FROM orders WHERE orderId = ?";
+		return update($pdo, $sql, $orderId);
+	}
+
+
+	function deleteOrderInCurrentOrderById($pdo, $orderId)
+	{
+		$sql = "DELETE FROM currentorders WHERE orderId = ?";
+		return update($pdo, $sql, $orderId);
+	}
+
 
 	function getLastInsertId($pdo)
 	{
