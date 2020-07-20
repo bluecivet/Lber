@@ -37,6 +37,18 @@ function phoneNavListStyle()
 
 	});
 
+	// add when the logo image is click then go to the main page
+	navLogo.on("click", function()
+	{
+		window.location.replace("index.html");
+	});
+
+
+	// when the panel option list is click remove side bar on the phone
+	$(".panelOption .navList li").on("click", function()
+	{
+		cover.click();
+	})
 
 	// add listener to wrap so than when click the menu page move to right
 	cover.on("click", function()

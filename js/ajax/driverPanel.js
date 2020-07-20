@@ -10,51 +10,32 @@ $(function()
 
 	// map 
 
-	let map = document.getElementById("orderMap");
-	let mapSetup = 
-	{
-		center: new google.maps.LatLng(51.508742,-0.120850),
-		zoom: 12,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	}
-	let orderMap = new google.maps.Map(map, mapSetup);
-
-
+	let mapEle = document.getElementById("orderMap");
+	let orderMap = getMap(mapEle);
 	let geocoder = new google.maps.Geocoder();
+	let directionsService = new google.maps.DirectionsService();
+	let directionsRenderer = new google.maps.DirectionsRenderer();
+	directionsRenderer.setMap(orderMap);
+	
 	let city = $(".currentCity input").val();
 	getCenterMapByCity(orderMap, geocoder, city);
 
-	getCurrentOrderList(orderMap, geocoder);
+	getCurrentOrderList(orderMap, geocoder, directionsService, directionsRenderer);
 
 	// current city input box set up
-	console.log("set up on change event");
 	$(".currentCity input").on("change", function()
 	{
 		let city = $(this).val();
 		getCenterMapByCity(orderMap, geocoder, city);
-		getCurrentOrderList(orderMap, geocoder);
+		getCgetCurrentOrderList(orderMap, geocoder, directionsService, directionsRenderer);
 	})
 }) 
 
 
-function getCenterMapByCity(map, geocoder, city)
-{
-	geocoder.geocode({"address":city}, function(result, state)
-	{
-		console.log("in geocoder");
-		console.log(result);
-		console.log(state);
-		if(state==google.maps.GeocoderStatus.OK)
-		{
-			console.log("setting center");
-			map.setCenter(result[0].geometry.location);
-		}
-	})
-}
 
 
 
-function getCurrentOrderList(map, geocoder)
+function getCurrentOrderList(map, geocoder, directionsService, directionsRenderer)
 {
 	// clear current list first
 	console.log("get order list");
@@ -67,7 +48,7 @@ function getCurrentOrderList(map, geocoder)
 		data: "city="+city,
 		success: function(response)
 		{
-			currentOrderList(response, map, geocoder);
+			currentOrderList(response, map, geocoder, directionsService, directionsRenderer);
 		}
 	});
 }

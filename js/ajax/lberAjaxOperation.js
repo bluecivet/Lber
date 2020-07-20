@@ -261,7 +261,7 @@ function addingPoint(response)
 
 
 // get current order list in driver panel
-function currentOrderList(response, map, geocoder)
+function currentOrderList(response, map, geocoder, directionsService, directionsRenderer)
 {
 	console.log(response);
 	try 
@@ -269,7 +269,7 @@ function currentOrderList(response, map, geocoder)
 		let data = JSON.parse(response);
 		for(let i = 0; i < data.length; i++)
 		{
-			let anOrder = generateCurrentOrderListOrder(data[i], map, geocoder);
+			let anOrder = generateCurrentOrderListOrder(data[i], map, geocoder, directionsService, directionsRenderer);
 			$(".currentOrderList .orderList").append(anOrder);
 		}
 	}
@@ -365,7 +365,7 @@ function generateOrder(data)
 
 
 
-function generateCurrentOrderListOrder(data, map, geocoder)
+function generateCurrentOrderListOrder(data, map, geocoder, directionsService, directionsRenderer)
 {
 	console.log(data);
 	let anOrder = $("<div class = 'anOrder'></div>");
@@ -434,33 +434,9 @@ function generateCurrentOrderListOrder(data, map, geocoder)
 	buttonGroup.append(acceptButton);
 	anOrder.append(buttonGroup);
 
-	// set marker on the map
 	let marker;
-	let infowindow
-	geocoder.geocode({"address":data.fromAddress}, function(results, state)
-	{
-		if(state==google.maps.GeocoderStatus.OK)
-		{
-			marker = new google.maps.Marker(
-			{
-	           map: map,
-	           position: results[0].geometry.location
-			});
+	let infowindow;
 
-			infowindow = new google.maps.InfoWindow(
-			{
-		    	content: anOrder[0]
-		  	});
-
-			marker.addListener('click', function() 
-			{
-			     infowindow.open(map, marker);
-			    console.log("marker click");
-			 });
-		}
-	});
-
-	
 	acceptButton.on("click", function()
 	{
 		let button = $(this);
@@ -474,7 +450,9 @@ function generateCurrentOrderListOrder(data, map, geocoder)
 				if(response == "good")
 				{
 					alert("you accept an order!");
-					button.parent().parent().hide();
+					button.parent().parent().css("display", "none");
+					anOrder.hide();
+					directionsRenderer.setMap(null);
 					marker.setMap(null);
 					marker = null;
 				}
@@ -484,6 +462,28 @@ function generateCurrentOrderListOrder(data, map, geocoder)
 				}
 			}
 		});
-	})
+	});
+
+
+	// set marker on the map
+	let anOrderClone = anOrder.clone(true);
+	geocoder.geocode({"address":data.fromAddress}, function(results, state)
+	{
+		if(state==google.maps.GeocoderStatus.OK)
+		{
+			marker = new google.maps.Marker(
+			{
+		       map: map,
+		       position: results[0].geometry.location
+			});
+
+			infowindow = new google.maps.InfoWindow(
+			{
+		    	content: anOrderClone[0]
+		  	});
+
+			acceptOrderMapMarkerSetup(data, map, marker, infowindow, directionsService, directionsRenderer);
+		}
+	});
 	return anOrder;
 }
