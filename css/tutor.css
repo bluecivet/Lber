@@ -1,0 +1,51 @@
+/*main
+{
+	background-color: #ffffff;
+}*/
+
+.tutorInstruction
+{
+	width: 90%;
+	padding: 1em;
+	margin: 0 auto;
+	padding: 1em 0;
+	padding-bottom: 3em;
+	border-bottom: 1px solid #ee0000;
+}
+
+
+.tutorInstruction h2
+{
+	font-size: 2em;
+	padding: 0.5em 0;
+	text-align: center;
+}
+
+.tutorInstruction p
+{
+	font-size: 1.2em;
+	padding: 0.5em 0;
+	line-height: 1.5em;
+	margin-bottom: 1em;
+	font-family: "DINWebBold",sans-serif;
+}
+
+.tutorInstruction .instruction
+{
+	color: #ee0000;
+	font-weight: 600;
+}
+
+.tutorInstruction .tutorImg img
+{
+	width: 100%;
+}
+
+
+@media(min-width: 1000px)
+{
+	.tutorInstruction
+	{
+		width: 70%;
+	}
+}
