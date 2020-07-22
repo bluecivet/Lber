@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- By Zhilong Gan -->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Documentation</title>
+</head>
+<body>
+	<h2>about the project</h2>
+	<p>
+		the project is a mini Uber. <br>
+		People have to sign in to an account first in order use the web. <br>
+		People can sign in at main pages (most html file expect driverPanel.html and userPanel.html). <br>
+		the main page is just talk about the web <br>
+		tutor.html are instructions that tach users how to use the page.
+	</p>
+
+	<h2>some function of the web</h2>
+	<p>
+		costomer can place their order and driver can accept orders in their control panel. <br>
+		costomer have to have enough point holding in order to place orders. <br>
+
+		once costomer place an order, drivers can see it and decide they should accept or not. of course, if other diver accept it first, then other driver can not accept any more. <br>
+		 <br>
+		 if driver finish delivery the order, costomers have to click finish button in current order in their panel. This means the order is end. <br>
+		 point will transfer from costomer to driver. <br>
+	</p>
+
+	<h2>common function</h2>
+
+	<p>
+		both user and driver have some common function they can use <br>
+		they can view their order history in their panel <br>
+		they can see their current order <br>
+		there is informaton in order that say the order is accepted or not in both order history and current history. <br>
+		they are able to change their personal setting like user name and password  <br>
+		finally, they can add point by their own. 
+	</p>
+
+	<h2>project file structure</h2>
+	<p>
+		directary name is very direct. it tells you what type of file they contain. <br>
+		index.html is the main page of the web so it conatin in no directary. <br>
+		awesomefont folder is icon folder I just include the whole awesomefont in this project which created by awesomefont. <br>
+		webfonts is part of awesomefont icon which is actually use. It come will css/all.css file. <br>
+	</p>
+
+	<h2>html</h2>
+	<p>
+		some of the html I use javascript to load it like order history, current orders. <br> 
+		they are mainly in driverPanel.html and userPanel.html <br>
+		in documentation/templage there are the orginal file for it <br>
+		if you want to modify it, you can follow the template.
+	</p>
+
+	<h2>form input error handling</h2>
+	<p>
+		I use h5 and javascript to handle error. <br> 
+		there are low level of api: formValidationAPI.js <br>
+		the api is for checking h5 error like require pattern ... <br>
+		they can be commonly use <br>
+		some other type of error, people may need to write it out <br>
+		some example use in loginCheck.js and signinCheck.js <br>
+
+		panelFormErrorHandle.js is better stucture a more common and easy to use <br>
+		I make this to an object just new the object, hide other logical code <br>
+
+		all of them, you have to create a errorMessage object for show which type of error and show the message out. <br>
+
+	</p>
+
+	<h2>form submitting</h2>
+	<p>
+		although, there are action attrubute in html form, I use ajax to submit form. I will check form again in server side like php/form/formUtil.php <br>
+
+		if the form are successful submit, server will send a "good" back. <br>
+		if some errors, server will send just the error message or a json object that include where should place the error and error message <br>
+	</p>
+
+	<h2>log in process</h2>
+	<p>
+		log in process is thing that I am proud of. <br>
+		I use token to do so <br>
+		I have my own encryption and decryption process <br>
+		there are a higher level encrytion but I am being lazy to do this for mow <br>
+
+		code are in php/vertify.php and php/vertifyConfig.php  <br>
+
+		this prevent some one may modify the user name and password <br>
+
+		data are transfer in encrypted.
+	</p>
+
+	<h2>map</h2>
+	<p>
+		map is another thing that I am proud of <br>
+		I use google map api <br>
+		if driver change city, the map will load that city <br>
+		mark on the map are address of the orders <br>
+		if user click on it it can display order information <br>
+		also it will display the direction on the map <br>
+	</p>
+</body>
+</html>

@@ -41,7 +41,7 @@
 				<ul class = "panel">
 					<li class = "date" aria-label = "date">2020-07-03</li>
 					
-					<li class = "headImg" aria-label = "you image"> <img src="image/headImg.jpg"></li>
+					<li class = "headImg" aria-label = "you image"> <img src="image/headImg.jpg" alt = "this is your head image"></li>
 					<li class = "welcome">welcome!</li>	
 					<li class = "name">Hi, Zhilong</li>
 					<li><i class="far fa-bell"></i></li>
@@ -76,7 +76,7 @@
 							</ul>
 						</div>
 
-						<form class = "placeOrderForm" action="#" method="POST">
+						<form class = "placeOrderForm" action="php/panel/placeOrder.php" method="POST">
 
 							<div class = "orderName">
 								<label for = "orderName">order name:</label>
@@ -120,7 +120,7 @@
 							
 							<div class = "orderDiscription">
 								<label for = "orderDiscription" >description:</label>
-								<textarea col = "20" row = "10" name = "orderDiscription" id = "orderDiscription"></textarea>
+								<textarea cols = "20" rows = "10" name = "orderDiscription" id = "orderDiscription"></textarea>
 							</div>
 							
 							<div class = "buttonControl">
@@ -178,14 +178,15 @@
 
 
 						</div>
-
-						<div class = "filpPage">
+						
+						<!-- being lazy to do this -->
+						<!-- <div class = "filpPage">
 							<ul>
 								<li role = "button"><a href="#"></a>1</li>
 								<li role = "button"><a href="#"></a>2</li>
 								<li role = "button"><a href="#"></a>3</li>
 							</ul>
-						</div>
+						</div> -->
 					</div>
 					
 					<!-- end of order history -->
@@ -234,14 +235,15 @@
 
 
 						</div>
-
-						<div class = "filpPage">
+						
+						<!-- being laze to do this -->
+						<!-- <div class = "filpPage">
 							<ul>
 								<li role = "button"><a href="#"></a>1</li>
 								<li role = "button"><a href="#"></a>2</li>
 								<li role = "button"><a href="#"></a>3</li>
 							</ul>
-						</div>
+						</div> -->
 					</div>
 					
 
@@ -251,7 +253,7 @@
 
 					<div class = "personalSetting">
 						<h2>Personal Setting</h2>
-						<form action = "" method="POST">		
+						<form action = "changePersonalInformation.php" method="POST">		
 
 							<div class = "email">
 								<label for = "email">email: </label>
@@ -296,7 +298,7 @@
 							<label>currnet point: </label>
 							<label class = "currentPointLabel">200</label>
 						</div>
-						<form action = "" method="post">
+						<form action = "php/panel/addingPoint.php" method="post">
 							<div class = "adding Money">
 								<label for = "addingMoney">adding money:</label>
 								<input type="number" name="addingMoney" id = "addingMoney" required="required" min = "0">
@@ -304,7 +306,7 @@
 
 							<div class = "creditCard">
 								<label for = "creditCard">credit card number:</label>
-								<input type="text" name="creditCard" id = "credit" required="required" pattern="^[0-9]{12,20}$">
+								<input type="text" name="creditCard" id = "creditCard" required="required" pattern="^[0-9]{12,20}$">
 							</div>
 
 							<button type = "button" class = "addValueButton">add value</button>
@@ -315,7 +317,7 @@
 				
 			</div>
 		</main>
-
+	</div>
 	
 	<script type="text/javascript" src = "js/dependWindowSize.js"></script>
 </body>

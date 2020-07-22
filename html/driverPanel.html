@@ -47,7 +47,7 @@
 				<ul class = "panel">
 					<li class = "date" aria-label = "date">2020-07-03</li>
 					
-					<li class = "headImg" aria-label = "you image"> <img src="image/headImg.jpg"></li>
+					<li class = "headImg" aria-label = "you image"> <img src="image/headImg.jpg" alt = "this is your head image"></li>
 					<li class = "welcome">welcome!</li>	
 					<li class = "name">Hi, Zhilong</li>
 					<li><i class="far fa-bell"></i></li>
@@ -207,15 +207,17 @@
 
 
 						</div>
+					</div>
 
-						<div class = "filpPage">
+						<!-- this is filping page function which I lazy to do -->
+						<!-- <div class = "filpPage">
 							<ul>
 								<li role = "button"><a href="#"></a>1</li>
 								<li role = "button"><a href="#"></a>2</li>
 								<li role = "button"><a href="#"></a>3</li>
 							</ul>
 						</div>
-					</div>
+					</div> -->
 					
 					<!-- end of order history -->
 
@@ -263,14 +265,15 @@
 
 
 						</div>
-
-						<div class = "filpPage">
+						
+						<!-- I am lazy to do this filp page function -->
+						<!-- <div class = "filpPage">
 							<ul>
 								<li role = "button"><a href="#"></a>1</li>
 								<li role = "button"><a href="#"></a>2</li>
 								<li role = "button"><a href="#"></a>3</li>
 							</ul>
-						</div>
+						</div> -->
 					</div>
 					
 
@@ -280,7 +283,7 @@
 
 					<div class = "personalSetting">
 						<h2>Personal Setting</h2>
-						<form action = "" method="POST">		
+						<form action = "php/panel/changePersonalInformation.php" method="POST">		
 
 							<div class = "email">
 								<label for = "email">email: </label>
@@ -325,7 +328,7 @@
 							<label>currnet point: </label>
 							<label class = "currentPointLabel">200</label>
 						</div>
-						<form action = "" method="post">
+						<form action = "php/panel/addingPoint.php" method="post">
 							<div class = "adding Money">
 								<label for = "addingMoney">adding money:</label>
 								<input type="number" name="addingMoney" id = "addingMoney" required="required" min = "0">
@@ -333,7 +336,7 @@
 
 							<div class = "creditCard">
 								<label for = "creditCard">credit card number:</label>
-								<input type="text" name="creditCard" id = "credit" required="required" pattern="^[0-9]{12,20}$">
+								<input type="text" name="creditCard" id = "creditCard" required="required" pattern="^[0-9]{12,20}$">
 							</div>
 
 							<button type = "button" class = "addValueButton">add value</button>
@@ -344,7 +347,7 @@
 				
 			</div>
 		</main>
-
+	</div>
 	
 	<script type="text/javascript" src = "js/dependWindowSize.js"></script>
 </body>
