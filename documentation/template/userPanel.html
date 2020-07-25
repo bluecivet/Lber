@@ -12,26 +12,20 @@
 	<link href="css/all.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/indexStyle.css">
 	<link rel="stylesheet" type="text/css" href="css/displayArea.css">
-	
-	<!-- google map api -->
-	 <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB95fmPVseTMsFBDFchzw3y8yvf995Bq0k&callback=initMap&libraries=&v=weekly"
-      defer
-    ></script>
-	<script type="text/javascript" src = "js/map/lberMapAPI.js"></script>
+
+
 	<script type="text/javascript" src = "js/jQuery.min.js"></script>
 	<script type="text/javascript" src = "js/phonePanelNavList.js"></script>
 	<script type="text/javascript" src = "js/showPanel.js"></script>
 	<script type="text/javascript" src = "js/ajax/lberAjaxOperation.js"></script>
 	<script type="text/javascript" src = "js/ajax/generalSetup.js"></script>
-	<script type="text/javascript" src = "js/ajax/driverPanel.js"></script>
+	<script type="text/javascript" src = "js/ajax/userPanel.js"></script>
 	<script type="text/javascript" src = "js/formValidationAPI.js"></script>
 	<script type="text/javascript" src = "js/panelFormErrorHandle.js"></script>
 	
 	
 	
-	
-    <script type="text/javascript" src = "js/map/driverOrderMap.js"></script>
+
 
 </head>
 <body>
@@ -57,7 +51,7 @@
 
 			<div class = "panelOption">
 				<ul class = "navList" role = "menu">
-					<li data-index = "0" class = "active"><span>Find Order</span> </li>
+					<li data-index = "0" class = "active"><span>Place Order</span> </li>
 					<li data-index = "1"><span>Order History</span> </li>
 					<li data-index = "2"><span>Current Order</span> </li>
 					<li data-index = "3"><span>Personal Setting</span> </li>
@@ -73,128 +67,176 @@
 			<div class = mainWrap>
 				<div class = "displayArea">
 					
-					<div class = "findOrder">
-						<h2>Find Your Order</h2>
-						<div id = "orderMap"></div>
+					<div class = "placeOrder">
+						<h2>Place Your Order</h2>
 
-						<div class = "currentCity">
-							<label for = "currentCity">current city</label>
-							<input type="text" name="currentCity" id = "currentCity" value = "vancouver">
+						<div class = "errorMessageBox">
+							<ul>
+								
+							</ul>
 						</div>
 
-						<div class = "currentOrderList">
-							<h2>Current Orders</h2>
-							<div class = "orderList">
-								<div class = "anOrder">
-									<div class = "orderName">
-										<label class = "orderLabel">order name: </label>
-										<label class = "labelContent">order1</label>
-									</div>
-								
-									<div class = "carrying">
-										<label class = "orderLabel">carrying: </label>
-										<label class = "labelContent">big box</label>
-									</div>
+						<form class = "placeOrderForm" action="php/panel/placeOrder.php" method="POST">
 
-									<div class = "deliveryDate">
-										<label class = "orderLabel">delivery date: </label>
-										<label class = "labelContent">2020-07-05</label>
-									</div>
-
-									<div class = "from">
-										<label class = "orderLabel">from: </label>
-										<address>2082 E25ave Vancouver BC Canada</address>
-									</div>
-
-									<div class = "to">
-										<label class = "orderLabel">to: </label>
-										<address>GuangZhou</address>
-									</div>
-
-									<div class = "orderDiscription">
-										<label class = "orderLabel">description</label>
-										<p class = "labelContent">adsf adf jioa jo oij oij oij oij oi jaosij foij qo iq qjoj qio joi oiij ioj qo jqo</p>
-									</div>
-									<div class = "buttonControl">
-										<button>accept</button>
-									</div>
-								</div>
-
-
-								<div class = "anOrder">
-									<div class = "orderName">
-										<label class = "orderLabel">order name: </label>
-										<label class = "labelContent">order1</label>
-									</div>
-								
-									<div class = "carrying">
-										<label class = "orderLabel">carrying: </label>
-										<label class = "labelContent">big box</label>
-									</div>
-
-									<div class = "deliveryDate">
-										<label class = "orderLabel">delivery date: </label>
-										<label class = "labelContent">2020-07-05</label>
-									</div>
-
-									<div class = "from">
-										<label class = "orderLabel">from: </label>
-										<address>2082 E25ave Vancouver BC Canada</address>
-									</div>
-
-									<div class = "to">
-										<label class = "orderLabel">to: </label>
-										<address>GuangZhou</address>
-									</div>
-
-									<div class = "orderDiscription">
-										<label class = "orderLabel">description</label>
-										<p class = "labelContent">adsf adf jioa jo oij oij oij oij oi jaosij foij qo iq qjoj qio joi oiij ioj qo jqo</p>
-									</div>
-									<div class = "buttonControl">
-										<button>accept</button>
-									</div>
-								</div>
+							<div class = "orderName">
+								<label for = "orderName">order name:</label>
+								<input type="text" name="orderName" id = "orderName" maxlength="10">
 							</div>
 							
+							<div class = "carrying">
+								<label for = "carrying">carrying:</label>
+								<input type="text" name="carrying" id = "carrying" required="required">
+							</div>
+							
+							<div class = "deliveryDate">
+								<label for = "deliveryDate">delivery date:</label>
+								<input type="date" name="deliveryDate" id = 
+								"deliveryDate" required="required">
+							</div>
 
-						</div>
+							<div class = "fromCity">
+								<label for = "deliveryDate">from city:</label>
+								<input type="text" name="fromCity" id = 
+								"fromCity" required="required">
+							</div>
+
+							<div class = "fromAddress">
+								<label for = "deliveryDate">from address:</label>
+								<input type="text" name="fromAddress" id = 
+								"fromAddress" required="required">
+							</div>
+
+							<div class = "toCity">
+								<label for = "deliveryDate">to city:</label>
+								<input type="text" name="toCity" id = 
+								"toCity" required="required">
+							</div>
+
+							<div class = "toAddress">
+								<label for = "deliveryDate">to address:</label>
+								<input type="text" name="toAddress" id = 
+								"toAddress" required="required">
+							</div>
+							
+							<div class = "orderDiscription">
+								<label for = "orderDiscription" >description:</label>
+								<textarea cols = "20" rows = "10" name = "orderDiscription" id = "orderDiscription"></textarea>
+							</div>
+							
+							<div class = "buttonControl">
+								<button type = "button" class = "placeOrderButton">place order</button>
+								<button type = "reset">reset</button>
+							</div>
+							
+							
+						</form>
 					</div>
-					<!-- end find order -->
+					<!-- end place order -->
 
 
 					<div class = "orderHistory">
 						<h2>Order History</h2>
 						<div class = "orders" role = "list">
-							
-							<!-- how the an order look like ?
-							look at documentation template  -->
+							<div class = "anOrder">
+								<div class = "orderName">
+									<label class = "orderLabel">order name: </label>
+									<label class = "labelContent">order1</label>
+								</div>
+			
+								<div class = "carrying">
+									<label class = "orderLabel">carrying: </label>
+									<label class = "labelContent">big box</label>
+								</div>
+								
+								<div class = "orderDate">
+									<label class = "orderLabel">order date: </label>
+									<label class = "labelContent">2020-07-05</label>
+								</div>
+
+								<div class = "deliveryDate">
+									<label class = "orderLabel">delivery date: </label>
+									<label class = "labelContent">2020-07-05</label>
+								</div>
+
+								<div class = "from">
+									<label class = "orderLabel">from: </label>
+									<address>2082 E25ave Vancouver BC Canada</address>
+								</div>
+
+								<div class = "to">
+									<label class = "orderLabel">to: </label>
+									<address>GuangZhou</address>
+								</div>
+
+								<div class = "orderDiscription">
+									<label class = "orderLabel">description</label>
+									<p class = "labelContent">adsf adf jioa jo oij oij oij oij oi jaosij foij qo iq qjoj qio joi oiij ioj qo jqo</p>
+								</div>
+
+								<button>delete</button>
+							</div>
+
 
 						</div>
-					</div>
-
-						<!-- this is filping page function which I lazy to do -->
+						
+						<!-- being lazy to do this -->
 						<!-- <div class = "filpPage">
 							<ul>
 								<li role = "button"><a href="#"></a>1</li>
 								<li role = "button"><a href="#"></a>2</li>
 								<li role = "button"><a href="#"></a>3</li>
 							</ul>
-						</div>
-					</div> -->
+						</div> -->
+					</div>
 					
 					<!-- end of order history -->
 
 					<div class = "currentOrder">
 						<h2>Current Order</h2>
 						<div class = "orders" role = "list">
-							
-							<!-- how the an order look like ?
-							look at documentation template  -->
+							<div class = "anOrder">
+								<div class = "orderName">
+									<label class = "orderLabel">order name: </label>
+									<label class = "labelContent">order1</label>
+								</div>
+					
+								<div class = "carrying">
+									<label class = "orderLabel">carrying: </label>
+									<label class = "labelContent">big box</label>
+								</div>
+								
+								<div class = "orderDate">
+									<label class = "orderLabel">order date: </label>
+									<label class = "labelContent">2020-07-05</label>
+								</div>
+
+								<div class = "deliveryDate">
+									<label class = "orderLabel">delivery date: </label>
+									<label class = "labelContent">2020-07-05</label>
+								</div>
+
+								<div class = "from">
+									<label class = "orderLabel">from: </label>
+									<address>2082 E25ave Vancouver BC Canada</address>
+								</div>
+
+								<div class = "to">
+									<label class = "orderLabel">to: </label>
+									<address>GuangZhou</address>
+								</div>
+
+								<div class = "orderDiscription">
+									<label class = "orderLabel">description</label>
+									<p class = "labelContent">adsf adf jioa jo oij oij oij oij oi jaosij foij qo iq qjoj qio joi oiij ioj qo jqo</p>
+								</div>
+
+								<button>delete</button>
+							</div>
+
 
 						</div>
 						
-						<!-- I am lazy to do this filp page function -->
+						<!-- being laze to do this -->
 						<!-- <div class = "filpPage">
 							<ul>
 								<li role = "button"><a href="#"></a>1</li>
@@ -211,7 +253,7 @@
 
 					<div class = "personalSetting">
 						<h2>Personal Setting</h2>
-						<form action = "php/panel/changePersonalInformation.php" method="POST">		
+						<form action = "changePersonalInformation.php" method="POST">		
 
 							<div class = "email">
 								<label for = "email">email: </label>
